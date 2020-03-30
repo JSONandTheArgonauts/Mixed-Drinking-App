@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>A Recipe</title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <header>
+      <h1>A single Recipe</h1>
+    </header>
+
+    <main>
+      <div th:each="recipe: ${recipes}">
+        <h2 th:text="${recipe.name}"></h2>
+        <img th:src="${recipe.image}" />
+        <p th:text="{recipe.content}"></p>
+      </div>
+      <section id="resultsLink">
+        <a href="http://localhost:8080/results">Back to Recipes</a>
+      </section>
+    </main>
+
+    <footer>
+      <small>Copyright JSON and the Argonauts 2020</small>
+    </footer>
+  </body>
+</html>
