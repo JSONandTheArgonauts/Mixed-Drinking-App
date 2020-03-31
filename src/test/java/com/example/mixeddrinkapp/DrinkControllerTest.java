@@ -94,7 +94,7 @@ public class DrinkControllerTest {
 	@Test
 	public void shouldAddSingleGarnishToModel() {
 		long garnishId = 1L;
-		when(garnishRepo.findById(garnishId)).thenReturn("garnishes", garnish);
+		when(garnishRepo.findById(garnishId)).thenReturn(Optional.of(garnish));
 		
 		underTest.findOneGarnish(garnishId, model);
 		verify(model).addAttribute("garnishes", garnish);
