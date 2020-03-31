@@ -18,10 +18,6 @@ public class Garnish {
 		return id;
 	}
 	
-	public String getFlavor() {
-		return flavor;
-	}
-	
 	public String getName() {
 		return name;
 	}
