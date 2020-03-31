@@ -25,15 +25,6 @@ public class TestGarnish {
 		assertThat(1L, is(result));
 	} 
 	
-	@Test
-	public void shouldReturnFlavor () {
-		Garnish  one = new Garnish(1L, "", "cherry", "");
-		Garnish two = new Garnish(2L, "", "lemon", "");
-		
-		String result = one.getFlavor();
-		
-		assertThat("cherry", is(result));
-	}
 	
 	@Test
 	public void shouldReturnAmount() {
