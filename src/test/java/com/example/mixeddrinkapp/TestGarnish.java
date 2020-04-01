@@ -17,19 +17,18 @@ public class TestGarnish {
 
 	@Test
 	public void shouldReturnId () {
-		Garnish  one = new Garnish(1L, "", "", "");
-		Garnish two = new Garnish(2L, "", "", "");
+		Garnish  one = new Garnish(1L, "", "");
+		Garnish two = new Garnish(2L, "", "");
 		
 		Long result = one.getId();
 		
 		assertThat(1L, is(result));
 	} 
 	
-	
 	@Test
 	public void shouldReturnAmount() {
-		Garnish  one = new Garnish(1L, "", "", "three");
-		Garnish two = new Garnish(2L, "", "", "");
+		Garnish  one = new Garnish(1L, "", "three");
+		Garnish two = new Garnish(2L, "", "");
 		
 		String result = one.getAmount();
 		
