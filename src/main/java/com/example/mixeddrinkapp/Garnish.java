@@ -6,7 +6,7 @@ public class Garnish {
 	private String amount;
 	
 	
-	public Garnish(Long id, String name, String flavor, String amount) {
+	public Garnish(Long id, String name, String amount) {
 		this.id = id;
 		this.name = name;
 		this.amount = amount;
