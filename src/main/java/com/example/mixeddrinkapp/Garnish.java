@@ -3,7 +3,6 @@ package com.example.mixeddrinkapp;
 public class Garnish {
 	private Long id;
 	private String name;
-	private String flavor;
 	private String amount;
 	
 	
