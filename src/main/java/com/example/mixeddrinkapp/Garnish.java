@@ -9,7 +9,6 @@ public class Garnish {
 	public Garnish(Long id, String name, String flavor, String amount) {
 		this.id = id;
 		this.name = name;
-		this.flavor = flavor;
 		this.amount = amount;
 	}
 	
