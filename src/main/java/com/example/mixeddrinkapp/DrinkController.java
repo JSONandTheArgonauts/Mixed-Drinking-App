@@ -23,6 +23,12 @@ public class DrinkController {
 	
 	@Resource
 	private Mixer mixerId;
+	
+	@Resource
+	private GarnishRepository garnishRepo;
+	
+	@Resource
+	private Garnish garnishId;
 
 	@RequestMapping("show-drink")
 	public String findOneDrink(@RequestParam(value = "id") long id, Model model) {
@@ -40,7 +46,8 @@ public class DrinkController {
 	}
 
 	@RequestMapping("show-mixer")
-	public String findOneMixer(@RequestParam(value = "id") long mixerId, Model model) {
+	public String findOneMixer(@RequestParam(value = "id") long id, Model model) {
+		Optional<Mixer> mixer = mixerRepo.findById(id);
 		model.addAttribute("mixers", mixer.get());
 		return ("mixer");
 	}
@@ -53,7 +60,7 @@ public class DrinkController {
 	}
 
 	@RequestMapping("show-garnish")
-	public String findOneGarnish(@RequestParam( value = "id") long garnishId, Model model) {
+	public String findOneGarnish(@RequestParam( value = "id") long id, Model model) {
 		Optional<Garnish> garnish = garnishRepo.findById(id);
 		model.addAttribute("garnishes", garnish.get());
 		return ("garnish");
