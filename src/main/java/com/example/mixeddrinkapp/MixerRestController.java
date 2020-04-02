@@ -32,7 +32,7 @@ public class MixerRestController {
 	@RequestMapping("/(mixerName)/drinks")
 	public Collection<Drink> findAllDrinksByMixer(@PathVariable(value = "mixerName") String mixerName) {
 		Mixer mixer = mixerRepo.findByNameIgnoreCase(mixerName);
-		return drinkRepo.findByMixerContains(mixer);
+		return drinkRepo.findByMixersContains(mixer);
 	}
 
 }
