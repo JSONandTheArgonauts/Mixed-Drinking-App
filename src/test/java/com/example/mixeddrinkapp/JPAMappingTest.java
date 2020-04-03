@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -86,7 +87,7 @@ public class JPAMappingTest {
 	
 	@Test
 	public void shouldSaveAndLoadDrinks() {
-		Drink drink = new Drink("drink", "liquor", "mixer", "garnish");
+		Drink drink = new Drink("drink", "mixer", "garnish");
 		drink = drinkRepo.save(drink);
 		long drinkId = drink.getId();
 		
@@ -112,5 +113,20 @@ public class JPAMappingTest {
 		
 		assertThat(drink.getLiquors(), containsInAnyOrder(liquor, anotherLiquor));
 	}
+	
+//	@Test
+//	public void shouldFindDrinksForLiquors() {
+//		Liquor liquor = liquorRepo.save(new Liquor("liquor", true));
+//		
+//		Drink drink = drinkRepo.save(new Drink("drink", "mixer", "garnish", liquor));
+//		Drink anotherDrink = drinkRepo.save(new Drink("anotherDrink", "mixer", "garnish", liquor));
+//		
+//		entityManager.flush();
+//		entityManager.clear();
+//		
+//		Collection<Drink> drinksForLiquors = drinkRepo.findByLiquorContains(liquor);
+//		
+//		assertThat(drinksForLiquors, containsInAnyOrder(drink, anotherDrink));
+//	}
 
 }

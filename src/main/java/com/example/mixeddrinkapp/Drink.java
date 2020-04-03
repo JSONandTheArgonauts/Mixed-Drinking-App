@@ -7,6 +7,7 @@ import java.util.HashSet;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Drink {
@@ -18,6 +19,7 @@ public class Drink {
 	private String mixers;
 	private String garnish;
 
+	@OneToMany
 	private Collection<Liquor> liquors;
 
 //	default constructor
