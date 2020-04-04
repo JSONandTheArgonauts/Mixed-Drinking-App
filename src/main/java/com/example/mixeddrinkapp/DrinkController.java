@@ -19,6 +19,9 @@ public class DrinkController {
 	private Drink drinkId;
 	
 	@Resource
+	private LiquorRepository liquorRepo;
+	
+	@Resource
 	private MixerRepository mixerRepo;
 	
 	@Resource
@@ -70,6 +73,21 @@ public class DrinkController {
 	public String findAllGarnishes(Model model) {
 		model.addAttribute("garnishes", garnishRepo.findAll());
 		return ("garnishes");
+		
+	}
+
+	@RequestMapping("show-liquor")
+	public String findOneLiquor(@RequestParam( value = "id")long Id, Model model) {
+		Optional<Liquor> liquor = liquorRepo.findById(Id);
+		model.addAttribute("liquors", liquor.get());
+		return ("liquor");
+		
+	}
+
+	@RequestMapping("show-liquors")
+	public String findAllLiquors(Model model) {
+		model.addAttribute("liquors", liquorRepo.findAll());
+		return ("liquors");
 		
 	}
 

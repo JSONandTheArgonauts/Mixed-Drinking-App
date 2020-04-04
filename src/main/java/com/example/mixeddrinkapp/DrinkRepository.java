@@ -8,4 +8,6 @@ public interface DrinkRepository extends CrudRepository<Drink, Long> {
 
 	Collection<Drink> findByMixersContains(Mixer mixer);
 
+	Collection<Drink> findByLiquorsContains(Liquor liquor);
+
 }

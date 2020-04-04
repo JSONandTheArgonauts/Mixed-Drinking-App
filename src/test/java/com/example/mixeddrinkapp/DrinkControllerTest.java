@@ -29,6 +29,16 @@ public class DrinkControllerTest {
 	@Mock
 	private DrinkRepository drinkRepo;
 	
+	
+	@Mock
+	private Liquor liquor;
+	
+	@Mock
+	private Liquor anotherLiquor;
+	
+	@Mock
+	private LiquorRepository liquorRepo;
+	
 	@Mock
 	private Mixer mixer;
 	
@@ -71,6 +81,24 @@ public class DrinkControllerTest {
 		
 		underTest.findAllDrinks(model);
 		verify(model).addAttribute("drinks", allDrinks);
+	}
+	
+	@Test
+	public void shouldAddSingleLiquorToModel() {
+		long liquorId = 1L;
+		when(liquorRepo.findById(liquorId)).thenReturn(Optional.of(liquor));
+		
+		underTest.findOneLiquor(liquorId, model);
+		verify(model).addAttribute("liquors", liquor);
+	}
+	
+	@Test
+	public void shouldAddAllLiquorsToModel() {
+		Collection<Liquor> allLiquors = Arrays.asList(liquor, anotherLiquor);
+		when(liquorRepo.findAll()).thenReturn(allLiquors);
+		
+		underTest.findAllLiquors(model);
+		verify(model).addAttribute("liquors", allLiquors);
 	}
 	
 	@Test
