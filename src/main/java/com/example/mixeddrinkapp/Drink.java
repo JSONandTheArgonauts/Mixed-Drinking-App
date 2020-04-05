@@ -1,9 +1,6 @@
 package com.example.mixeddrinkapp;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,98 +11,61 @@ public class Drink {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private long drinkId;
 
-	private String name;
+	private String drinkName;
+
+	private String liquor1;
+
+	private String liquor2;
+
+	private String liquor3;
+
+	private String mixer1;
+
+	private String mixer2;
+
+	private String mixer3;
+
+	private String garnish1;
+
+	private String garnish2;
+
+	private String garnish3;
 
 	@ManyToMany
 	private Collection<Liquor> liquors;
 
-	@ManyToMany
-	private Collection<Mixer> mixers;
-
-	private String garnish;
-
-//	default constructor
+	// default constructor
 	public Drink() {
 	}
 
-	public Drink(String name, String mixers, String garnish, Liquor... liquors) {
-		this.name = name;
-		this.liquors = new HashSet<Liquor>(Arrays.asList(liquors));
-		this.garnish = garnish;
+	public Drink(String drinkName, String liquor1, String liquor2, String liquor3, String mixer1, String mixer2,
+			String mixer3, String garnish1, String garnish2, String garnish3) {
+		this.drinkName = drinkName;
+		this.liquor1 = liquor1;
+		this.liquor2 = liquor2;
+		this.liquor3 = liquor3;
+		this.mixer1 = mixer1;
+		this.mixer2 = mixer2;
+		this.mixer3 = mixer3;
+		this.garnish1 = garnish1;
+		this.garnish2 = garnish2;
+		this.garnish3 = garnish3;
 	}
 
 	public long getId() {
-		return id;
+		return drinkId;
 	}
 
 	public String getName() {
-		return name;
-	}
-
-	public Collection<Mixer> getMixers() {
-		return mixers;
-	}
-
-	public String getGarnish() {
-		return garnish;
+		return drinkName;
 	}
 
 	public Collection<Liquor> getLiquors() {
+
 		return liquors;
 	}
 
-	@Override
-	public String toString() {
-		return "Drink [id=" + id + ", name=" + name + ", mixers=" + mixers + ", garnish=" + garnish + ", liquors="
-				+ liquors + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((garnish == null) ? 0 : garnish.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((liquors == null) ? 0 : liquors.hashCode());
-		result = prime * result + ((mixers == null) ? 0 : mixers.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Drink other = (Drink) obj;
-		if (garnish == null) {
-			if (other.garnish != null)
-				return false;
-		} else if (!garnish.equals(other.garnish))
-			return false;
-		if (id != other.id)
-			return false;
-		if (liquors == null) {
-			if (other.liquors != null)
-				return false;
-		} else if (!liquors.equals(other.liquors))
-			return false;
-		if (mixers == null) {
-			if (other.mixers != null)
-				return false;
-		} else if (!mixers.equals(other.mixers))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
-
+	
 }
