@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,19 +18,19 @@ public class DrinkController {
 
 	@Resource
 	private Drink drinkId;
-	
+
 	@Resource
 	private LiquorRepository liquorRepo;
-	
+
 	@Resource
 	private MixerRepository mixerRepo;
-	
+
 	@Resource
 	private Mixer mixerId;
-	
+
 	@Resource
 	private GarnishRepository garnishRepo;
-	
+
 	@Resource
 	private Garnish garnishId;
 
@@ -59,11 +60,11 @@ public class DrinkController {
 	public String findAllMixers(Model model) {
 		model.addAttribute("mixers", mixerRepo.findAll());
 		return ("mixers");
-		
+
 	}
 
 	@RequestMapping("show-garnish")
-	public String findOneGarnish(@RequestParam( value = "id") long id, Model model) {
+	public String findOneGarnish(@RequestParam(value = "id") long id, Model model) {
 		Optional<Garnish> garnish = garnishRepo.findById(id);
 		model.addAttribute("garnishes", garnish.get());
 		return ("garnish");
@@ -73,22 +74,55 @@ public class DrinkController {
 	public String findAllGarnishes(Model model) {
 		model.addAttribute("garnishes", garnishRepo.findAll());
 		return ("garnishes");
-		
+
 	}
 
 	@RequestMapping("show-liquor")
-	public String findOneLiquor(@RequestParam( value = "id")long Id, Model model) {
+	public String findOneLiquor(@RequestParam(value = "id") long Id, Model model) {
 		Optional<Liquor> liquor = liquorRepo.findById(Id);
 		model.addAttribute("liquors", liquor.get());
 		return ("liquor");
-		
+
 	}
 
 	@RequestMapping("show-liquors")
 	public String findAllLiquors(Model model) {
 		model.addAttribute("liquors", liquorRepo.findAll());
 		return ("liquors");
-		
+
 	}
 
+	@RequestMapping("/add-liquor")
+	public String addLiquor(String liquorName, Boolean liquorInStock) {
+		Liquor newLiquor = liquorRepo.findByName(liquorName);
+		
+		if(newLiquor==null) {
+			newLiquor = new Liquor(liquorName, liquorInStock);
+			liquorRepo.save(newLiquor);
+		}
+		return "redirect:/show-liquors";
+	}
+	
+	@RequestMapping("/add-garnish")
+	public String addGarnish(String garnishName, Boolean garnishInStock) {
+		Garnish newGarnish = garnishRepo.findByName(garnishName);
+		
+		if(newGarnish==null) {
+			newGarnish = new Garnish(garnishName, garnishInStock);
+			garnishRepo.save(newGarnish);
+		}
+		return "redirect:/show-garnishs";
+	}
+	
+	@RequestMapping("/add-mixer")
+	public String addMixer(String mixerName, Boolean mixerInStock) {
+		Mixer newMixer = mixerRepo.findByName(mixerName);
+		
+		if(newMixer==null) {
+			newMixer = new Mixer(mixerName, mixerInStock);
+			mixerRepo.save(newMixer);
+		}
+		return "redirect:/show-mixers";
+	}
+	
 }
