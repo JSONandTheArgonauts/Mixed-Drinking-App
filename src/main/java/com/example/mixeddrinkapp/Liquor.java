@@ -1,8 +1,19 @@
 package com.example.mixeddrinkapp;
 
+import java.util.Collection;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Liquor {
 
-	private Long id;
+	@Id
+	@GeneratedValue
+	private Long liquorId;
+
 	private String name;
 	private String flavor;
 	private boolean inStock;
@@ -12,15 +23,20 @@ public class Liquor {
 		this.name = name;
 		this.flavor = flavor;
 		this.inStock = inStock;
+
+	@ManyToMany(mappedBy = "liquors")
+	private Collection<Drink> drinks;
+
+	public void setDrinks(Collection<Drink> drinks) {
+		this.drinks = drinks;
 	}
 
-	public Long getId() {
-		
-		return id;
+	// default constructor
+	public Liquor() {
 	}
 
 	public String getName() {
-		
+
 		return name;
 	}
 	
@@ -30,8 +46,13 @@ public class Liquor {
 	}
 	
 	public boolean getInStock() {
-		
+
 		return inStock;
+	}
+
+	public Long getId() {
+
+		return liquorId;
 	}
 
 }

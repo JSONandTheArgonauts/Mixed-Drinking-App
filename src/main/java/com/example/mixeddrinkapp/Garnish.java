@@ -1,14 +1,11 @@
 package com.example.mixeddrinkapp;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 @Entity
-public class Mixer {
+public class Garnish {
 
 	@Id
 	@GeneratedValue
@@ -18,28 +15,24 @@ public class Mixer {
 	private boolean inStock;
 
 //	default constructor
-	public Mixer() {
+	public Garnish() {
 	}
 
-	public Mixer(String name, boolean inStock) {
+	public Garnish(String name, boolean inStock) {
 		this.name = name;
 		this.inStock = inStock;
 	}
 
-	public String getName() {
+	public Long getId() {
+		return id;
+	}
 
+	public String getName() {
 		return name;
 	}
 
-	public boolean inStock() {
-
+	public boolean getInStock() {
 		return inStock;
-	}
-
-	public Long getId() {
-
-		return id;
-
 	}
 
 }
