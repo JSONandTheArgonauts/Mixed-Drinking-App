@@ -1,12 +1,10 @@
 package com.example.mixeddrinkapp;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
-import java.util.Collection;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -90,7 +88,7 @@ public class JPAMappingTest {
 	public void shouldSaveAndLoadDrinks() {
 		Drink drink = new Drink("drink", null, null, null, null, null, null, null, null, null);
 		drink = drinkRepo.save(drink);
-		long drinkId = drink.getId();
+		Long drinkId = drink.getId();
 
 		entityManager.flush();
 		entityManager.clear();
@@ -105,14 +103,17 @@ public class JPAMappingTest {
 		Liquor liquor = liquorRepo.save(new Liquor("liquor", true));
 		Liquor anotherLiquor = liquorRepo.save(new Liquor("anotherLiquor", true));
 
-		Drink drink = new Drink("name", "liquor", "anotherLiquor", null, "mixer", "garnish", null, null, null, null);
+		Drink drink = new Drink("name", liquor.getId(), anotherLiquor.getId(), null, null, null, null, null, null, null);
 		drink = drinkRepo.save(drink);
-		long drinkId = drink.getId();
+		Long drinkId = drink.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
 
 		Optional<Drink> result = drinkRepo.findById(drinkId);
 		drink = result.get();
-
-		assertThat(drink.getLiquors(), containsInAnyOrder(liquor.getId(), anotherLiquor));
+		
+		assertThat(drink.getLiquors(), containsInAnyOrder(liquor, anotherLiquor));
 	}
 
 //	@Test
