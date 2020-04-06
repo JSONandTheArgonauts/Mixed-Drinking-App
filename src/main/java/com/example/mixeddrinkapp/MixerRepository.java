@@ -6,4 +6,6 @@ public interface MixerRepository extends CrudRepository<Mixer, Long> {
 
 	Mixer findByNameIgnoreCase(String mixerName);
 
+	Mixer findByName(String mixerName);
+
 }

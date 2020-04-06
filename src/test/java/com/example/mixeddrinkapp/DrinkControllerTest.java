@@ -136,5 +136,15 @@ public class DrinkControllerTest {
 		underTest.findAllGarnishes(model);
 		verify(model).addAttribute("garnishes", allGarnishes);
 	}
+	
+	@Test
+	public void shouldAddAddtionalLiquorToModel() {
+		String liquorName = "new liquor";
+		Boolean liquorInStock = true;
+		underTest.addLiquor(liquorName, liquorInStock);
+		Liquor newLiquor = new Liquor(liquorName, liquorInStock);
+		when(liquorRepo.save(newLiquor)).thenReturn(newLiquor);
+	}
+	
 
 }
