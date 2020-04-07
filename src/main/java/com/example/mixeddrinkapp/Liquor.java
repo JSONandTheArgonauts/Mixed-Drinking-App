@@ -19,10 +19,11 @@ public class Liquor {
 	private boolean inStock;
 
 	public Liquor(Long id, String name, String flavor, boolean inStock) {
-		this.id = id;
+		this.liquorId = id;
 		this.name = name;
 		this.flavor = flavor;
 		this.inStock = inStock;
+	}
 
 	@ManyToMany(mappedBy = "liquors")
 	private Collection<Drink> drinks;
