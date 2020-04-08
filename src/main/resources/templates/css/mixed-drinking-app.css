@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: lightgreen;
+    font-family: sans-serif;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
