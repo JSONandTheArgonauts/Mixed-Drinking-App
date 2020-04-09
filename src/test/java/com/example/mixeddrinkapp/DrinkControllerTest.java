@@ -140,9 +140,10 @@ public class DrinkControllerTest {
 	@Test
 	public void shouldAddAddtionalLiquorToModel() {
 		String liquorName = "new liquor";
+		String liquorFlavor = "flavor";
 		Boolean liquorInStock = true;
-		underTest.addLiquor(liquorName, liquorInStock);
-		Liquor newLiquor = new Liquor(liquorName, liquorInStock);
+		underTest.addLiquor(liquorName, liquorFlavor, liquorInStock);
+		Liquor newLiquor = new Liquor(liquorName, liquorName, liquorInStock);
 		when(liquorRepo.save(newLiquor)).thenReturn(newLiquor);
 	}
 	
