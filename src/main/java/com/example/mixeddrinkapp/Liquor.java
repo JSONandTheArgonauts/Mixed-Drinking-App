@@ -18,8 +18,7 @@ public class Liquor {
 	private String flavor;
 	private boolean inStock;
 
-	public Liquor(Long id, String name, String flavor, boolean inStock) {
-		this.liquorId = id;
+	public Liquor( String name, String flavor, boolean inStock) {
 		this.name = name;
 		this.flavor = flavor;
 		this.inStock = inStock;
