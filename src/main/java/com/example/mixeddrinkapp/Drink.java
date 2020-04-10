@@ -15,8 +15,8 @@ public class Drink {
 //	default constructor
 	public Drink() {}
 
-	public Drink(String drinkName, Object object, Object object2, Object object3, Object object4, Object object5,
-			Object object6, Object object7, Object object8, Object object9) {
+	public Drink(String drinkName, String liquor1, String liquor2, String liquor3, String mixer1, String mixer2,
+			String mixer3, String garnish1, String garnish2, String garnish3) {
 		this.drinkName = drinkName;
 	}
 

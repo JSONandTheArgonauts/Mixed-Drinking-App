@@ -21,14 +21,25 @@ public class GarnishController {
 	@RequestMapping("show-garnish")
 	public String findOneGarnish(@RequestParam(value = "id") long id, Model model) {
 		Optional<Garnish> garnish = garnishRepo.findById(id);
-		model.addAttribute("garnishes", garnish.get());
-		return ("garnish");
+		model.addAttribute("garnishesModel", garnish.get());
+		return ("ingredients");
 	}
 
 	@RequestMapping("show-garnishes")
 	public String findAllGarnishes(Model model) {
-		model.addAttribute("garnishes", garnishRepo.findAll());
-		return ("garnishes");
+		model.addAttribute("garnishesModel", garnishRepo.findAll());
+		return ("ingerdients");
 
+	}
+	
+	@RequestMapping("/add-garnish")
+	public String addGarnish(String garnishName, Boolean garnishInStock) {
+		Garnish newGarnish = garnishRepo.findByName(garnishName);
+		
+		if(newGarnish==null) {
+			newGarnish = new Garnish(garnishName, garnishInStock);
+			garnishRepo.save(newGarnish);
+		}
+		return "redirect:/show-garnishs";
 	}
 }

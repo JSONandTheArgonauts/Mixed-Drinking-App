@@ -20,14 +20,14 @@ public class DrinkController {
 	@RequestMapping("/show-drink")
 	public String findOneDrink(@RequestParam(value = "id") long id, Model model) {
 		Optional<Drink> drink = drinkRepo.findById(id);
-		model.addAttribute("drinks", drink.get());
+		model.addAttribute("drinksModel", drink.get());
 		return "drink";
 
 	}
 
 	@RequestMapping("/show-drinks")
 	public String findAllDrinks(Model model) {
-		model.addAttribute("drinks", drinkRepo.findAll());
+		model.addAttribute("drinksModel", drinkRepo.findAll());
 		return "drinks";
 
 	}

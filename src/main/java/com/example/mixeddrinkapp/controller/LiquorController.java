@@ -32,4 +32,15 @@ public class LiquorController {
 		return ("ingredients");
 
 	}
+
+	@RequestMapping("/add-liquor")
+	public String addLiquor(String liquorName, String liquorFlavor, Boolean liquorInStock) {
+		Liquor newLiquor = liquorRepo.findByName(liquorName);
+
+		if (newLiquor == null) {
+			newLiquor = new Liquor(liquorName, liquorFlavor, liquorInStock);
+			liquorRepo.save(newLiquor);
+		}
+		return "redirect:/show-liquors";
+	}
 }

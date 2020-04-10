@@ -14,24 +14,35 @@ import com.example.mixeddrinkapp.MixerRepository;
 
 @Controller
 public class MixerController {
-	
+
 	@Resource
 	private MixerRepository mixerRepo;
-	
+
 	@Resource
 	private Mixer mixerId;
 
 	@RequestMapping("show-mixer")
 	public String findOneMixer(@RequestParam(value = "id") long id, Model model) {
 		Optional<Mixer> mixer = mixerRepo.findById(id);
-		model.addAttribute("mixers", mixer.get());
-		return ("mixer");
+		model.addAttribute("mixersModel", mixer.get());
+		return ("ingredients");
 	}
 
 	@RequestMapping("show-mixers")
 	public String findAllMixers(Model model) {
-		model.addAttribute("mixers", mixerRepo.findAll());
-		return ("mixers");
+		model.addAttribute("mixersModel", mixerRepo.findAll());
+		return ("ingredients");
 
+	}
+	
+	@RequestMapping("/add-mixer")
+	public String addMixer(String mixerName, Boolean mixerInStock) {
+		Mixer newMixer = mixerRepo.findByName(mixerName);
+		
+		if(newMixer==null) {
+			newMixer = new Mixer(mixerName, mixerInStock);
+			mixerRepo.save(newMixer);
+		}
+		return "redirect:/show-mixers";
 	}
 }
