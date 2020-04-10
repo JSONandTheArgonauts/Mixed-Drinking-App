@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>A Recipe</title>
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="/mixed-drinking-app.css" />
   </head>
   <body>
     <header>
@@ -10,13 +10,15 @@
     </header>
 
     <main>
-      <div th:each="recipe: ${recipes}">
-        <h2 th:text="${drink.name}"></h2>
+      <div th:each="recipe: ${drink}">
+        <h2 th:text="${drink.drinkName}"></h2>
         <img th:src="${drink.image}" />
-        <p th:text="{drink.content}"></p>
+        <p th:text="{drink.object}"></p>
       </div>
-      <section id="resultsLink">
-        <a href="http://localhost:8080/results">Back to Available Recipes</a>
+      <section id="drinksLink">
+        <a href="http://localhost:8080/show-drinks"
+          >Back to Available Recipes</a
+        >
       </section>
     </main>
 
