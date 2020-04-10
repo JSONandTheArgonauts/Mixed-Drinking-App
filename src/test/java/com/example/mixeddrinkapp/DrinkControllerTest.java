@@ -15,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
+import com.example.controller.DrinkController;
+
 public class DrinkControllerTest {
 	
 	@InjectMocks
@@ -140,10 +142,10 @@ public class DrinkControllerTest {
 	@Test
 	public void shouldAddAddtionalLiquorToModel() {
 		String liquorName = "new liquor";
-		String liquorFlavor = "new flavor";
+		String liquorFlavor = "flavor";
 		Boolean liquorInStock = true;
 		underTest.addLiquor(liquorName, liquorFlavor, liquorInStock);
-		Liquor newLiquor = new Liquor(liquorName, liquorFlavor, liquorInStock);
+		Liquor newLiquor = new Liquor(liquorName, liquorName, liquorInStock);
 		when(liquorRepo.save(newLiquor)).thenReturn(newLiquor);
 	}
 	
