@@ -18,9 +18,6 @@ public class MixerController {
 	@Resource
 	private MixerRepository mixerRepo;
 
-	@Resource
-	private Mixer mixerId;
-
 	@RequestMapping("show-mixer")
 	public String findOneMixer(@RequestParam(value = "id") long id, Model model) {
 		Optional<Mixer> mixer = mixerRepo.findById(id);
@@ -34,12 +31,12 @@ public class MixerController {
 		return ("ingredients");
 
 	}
-	
+
 	@RequestMapping("/add-mixer")
 	public String addMixer(String mixerName, Boolean mixerInStock) {
 		Mixer newMixer = mixerRepo.findByName(mixerName);
-		
-		if(newMixer==null) {
+
+		if (newMixer == null) {
 			newMixer = new Mixer(mixerName, mixerInStock);
 			mixerRepo.save(newMixer);
 		}

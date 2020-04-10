@@ -22,7 +22,7 @@ public class LiquorController {
 	public String findOneLiquor(@RequestParam(value = "id") long Id, Model model) {
 		Optional<Liquor> liquor = liquorRepo.findById(Id);
 		model.addAttribute("liquorsModel", liquor.get());
-		return ("ingerdients");
+		return ("ingredients");
 
 	}
 
