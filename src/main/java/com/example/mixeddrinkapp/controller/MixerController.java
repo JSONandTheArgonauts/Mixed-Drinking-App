@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.mixeddrinkapp.controller;
 
 import java.util.Optional;
 

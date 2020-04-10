@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.mixeddrinkapp.controller;
 
 import java.util.Optional;
 
@@ -18,21 +18,18 @@ public class LiquorController {
 	@Resource
 	private LiquorRepository liquorRepo;
 
-	@Resource
-	private Liquor liquorId;
-
-	@RequestMapping("show-liquor")
+	@RequestMapping("/show-liquor")
 	public String findOneLiquor(@RequestParam(value = "id") long Id, Model model) {
 		Optional<Liquor> liquor = liquorRepo.findById(Id);
-		model.addAttribute("liquors", liquor.get());
-		return ("liquor");
+		model.addAttribute("liquorsModel", liquor.get());
+		return ("ingerdients");
 
 	}
-	
-	@RequestMapping("show-liquors")
+
+	@RequestMapping("/show-ingredients")
 	public String findAllLiquors(Model model) {
-		model.addAttribute("liquors", liquorRepo.findAll());
-		return ("liquors");
+		model.addAttribute("liquorsModel", liquorRepo.findAll());
+		return ("ingredients");
 
 	}
 }

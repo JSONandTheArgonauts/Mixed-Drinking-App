@@ -15,7 +15,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
-import com.example.controller.DrinkController;
+import com.example.mixeddrinkapp.controller.DrinkController;
 
 public class DrinkControllerTest {
 	
