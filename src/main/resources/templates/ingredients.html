@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://ww.thymeleaf.org">
-
 <head>
     <title>Ingredients List</title>
+    <link rel="stylesheet" href="css/mixed-drinking-app.css" />
 </head>
 
 <body>
@@ -11,20 +11,21 @@
     </header>
     <h2>Liquor</h2>
     <ul>
-        <li th:each="liquor: ${liquorModel}"><a th:href="|/liquor/${liquor.id}|"
+        <li th:each="liquor: ${liquorModel}"><a th:href="@{/show-liquors(id=${liquor.id})}"
             th:text="${liquor.name}"></a></li>
     </ul>
     <h2>Mixer</h2>
     <ul>
-        <li th:each="mixer: ${mixerModel}"><a th:href="|/${mixer.id}|"
+        <li th:each="mixer: ${mixerModel}"><a th:href="@{/show-mixers(id=${mixer.id})}"
             th:text="${mixer.name}"></a></li>
     </ul>
     <h2>Garnish</h2>
     <ul>
-        <li th:each="garnish: ${garnishModel}"><a th:href="|/${garnish.id}|"
+        <li th:each="garnish: ${garnishModel}"><a th:href="@{/show-garnishes(id=${garnish.id})}"
             th:text="${garnish.name}"></a></li>
     </ul>
-
+    
+  
 
     <h1>Add or Delete Ingredients</h1>
 
