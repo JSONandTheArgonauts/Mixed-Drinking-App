@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://ww.thymeleaf.org">
-<link rel="stylesheet" href="css/mixed-drinking-app.css" />
+  <link rel="stylesheet" href="css/mixed-drinking-app.css" />
 
-<head>
+  <head>
     <title>List of All Drinks Available</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>List of All Drinks </h1>
+      <h1>List of All Drinks</h1>
     </header>
 
-<main>
-     <img th:src="@{images/ingredients.jpg}"/>
+    <main>
+      <img th:src="@{images/ingredients.jpg}" />
 
-     <ul>
-     	<li th:each="drink: ${drinks}"><a th:href="|/drink?id=${drink.id}|"
-     		th:text="${drink.name}"></a></li>
+      <ul>
+        <li th:each="drink: ${drinks}">
+          <a th:href="|/drink?id=${drink.id}|" th:text="${drink.name}"></a>
+        </li>
+      </ul>
+      <section id="DrinkResultsLink">
+        <a href="http://localhost:8080/show-ingredients"
+          >Go Back to Ingredients</a
+        >
+      </section>
+    </main>
 
-     </ul>
-         <section id="DrinkResultsLink">
-               <a href="http://localhost:8080/ingredients">Go Back to Ingredients</a>
-            </section>
-</main>
-
-
-<footer>
+    <footer>
       <small>&copy; JSON and the Argonauts 2020 </small>
     </footer>
   </body>
