@@ -33,17 +33,12 @@
     </form>
 
 <!---------------------------------------->
-    <form action="#" th:action="@{/saveLiquor}" th:object="${liquor}" method="post">
-              <label th:text="#{msg.id}" />
-              <input type="number" th:field="*{id}" />
-              <label th:text="#{msg.name}" />
+    <!--<form action="liquorForm" th:action="@{/ingredients}" th:object="${liquor}" method="post">
+              <label for="liquorId" th:text="#{liquor.name}"></label>
               <input type="text" th:field="*{name}" />
 
-
-              <td><input type="submit" value="Submit" />
-
-
-  </form>
+              <input type="submit" value="Submit" />
+              </form> -->
 <!-------------------------WIP-------------------->
 
 
@@ -58,26 +53,20 @@
     <h2>Liquor</h2>
     <ul>
       <li th:each="liquor: ${liquorModel}">
-        <a
-          th:href="@{/show-liquor(id=${liquor.id})}"
-          th:text="${liquor.name}"
-        ></a>
+        <a th:text="${liquor.name}"></a>
       </li>
     </ul>
 
     <h2>Mixer</h2>
     <ul>
       <li th:each="mixer: ${mixerModel}">
-        <a th:href="@{/show-mixer(id=${mixer.id})}" th:text="${mixer.name}"></a>
+        <a th:text="${mixer.name}"></a>
       </li>
     </ul>
     <h2>Garnish</h2>
     <ul>
       <li th:each="garnish: ${garnishModel}">
-        <a
-          th:href="@{/show-garnish(id=${garnish.id})}"
-          th:text="${garnish.name}"
-        ></a>
+        <a th:text="${garnish.name}"></a>
       </li>
     </ul>
 
@@ -89,4 +78,4 @@
 
     </form>
   </body>
-</html>
+  </html>

@@ -40,14 +40,14 @@ public class LiquorController {
 		return "redirect:/show-ingredients";
 	}
 	
-//	@RequestMapping(value = "saveLiquor", method = RequestMethod.POST)
-//	public String saveLiquor(@ModelAttribute Liquor liquor, BindingResult errors, Model model) {
-//		Liquor newLiquor = liquorRepo.findByName(liquorName);
-//
-//		if (newLiquor == null) {
-//			newLiquor = new Liquor(liquorName, liquorFlavor, liquorInStock);
-//			liquorRepo.save(newLiquor);
-//		}
-//		return "redirect:/show-ingredients";
+//	@ModelAttribute("liquor")
+//	public Liquor prepareGuestModel() {
+//	    return new Liquor();
+//	}
+//	
+//	@RequestMapping(value = "/ingredients", method = RequestMethod.POST)
+//	public String insertLiquor(Liquor newLiquor, Model model) {
+//		liquorRepo.insertNewLiquor(newLiquor);
+//		
 //	}
 }
