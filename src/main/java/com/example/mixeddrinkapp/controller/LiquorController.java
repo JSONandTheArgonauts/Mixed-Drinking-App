@@ -26,6 +26,7 @@ public class LiquorController {
 
 	}
 
+<<<<<<< HEAD
 	@RequestMapping("/show-liquors")
 	public String findAllLiquors(Model model) {
 		model.addAttribute("liquorsModel", liquorRepo.findAll());
@@ -33,6 +34,8 @@ public class LiquorController {
 
 	}
 
+=======
+>>>>>>> af5928bae91a0a0cf2c3a7169ae6aaf93652218f
 	@RequestMapping("/add-liquor")
 	public String addLiquor(String liquorName, String liquorFlavor, Boolean liquorInStock) {
 		Liquor newLiquor = liquorRepo.findByName(liquorName);

@@ -3,11 +3,13 @@ package com.example.mixeddrinkapp;
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DrinkPopulator implements CommandLineRunner {
 	
 	@Resource
-	private DrinkRepository drinkRepo;
+	private RecipeRepository drinkRepo;
 	
 	@Resource
 	private LiquorRepository liquorRepo;
@@ -46,11 +48,11 @@ public class DrinkPopulator implements CommandLineRunner {
 		orange = garnishRepo.save(orange);
 		
 		//Finished Drinks Listed here (Name, Liquor 1 2 3, Mixer 1 2 3, Garnish 1 2 3)
-		Drink screwdriver = new Drink("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "");
+		Recipe screwdriver = new Recipe("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "");
 		screwdriver = drinkRepo.save(screwdriver);
-		Drink oldFasioned = new Drink("Old Fasioned", "Burbon", "", "", "Bitters", "", "", "Orange Slice", "Cherry", "");
+		Recipe oldFasioned = new Recipe("Old Fasioned", "Burbon", "", "", "Bitters", "", "", "Orange Slice", "Cherry", "");
 		oldFasioned = drinkRepo.save(oldFasioned);
-		Drink ginAndTonic = new Drink("Gin and Tonic", "Gin", "", "", "Tonic Water", "", "", "Lime Slice", "", "");
+		Recipe ginAndTonic = new Recipe("Gin and Tonic", "Gin", "", "", "Tonic Water", "", "", "Lime Slice", "", "");
 		ginAndTonic = drinkRepo.save(ginAndTonic);
 		
 	}

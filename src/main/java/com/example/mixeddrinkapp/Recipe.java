@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Drink {
+public class Recipe {
 
 	@Id
 	@GeneratedValue
@@ -16,10 +16,16 @@ public class Drink {
 	private String drinkName;
 
 //	default constructor
+<<<<<<< HEAD:src/main/java/com/example/mixeddrinkapp/Drink.java
 	public Drink() {
 	}
 
 	public Drink(String drinkName, String liquor1, String liquor2, String liquor3, String mixer1, String mixer2,
+=======
+	public Recipe() {}
+	
+	public Recipe(String drinkName, String liquor1, String liquor2, String liquor3, String mixer1, String mixer2,
+>>>>>>> af5928bae91a0a0cf2c3a7169ae6aaf93652218f:src/main/java/com/example/mixeddrinkapp/Recipe.java
 			String mixer3, String garnish1, String garnish2, String garnish3) {
 		this.drinkName = drinkName;
 	}

@@ -23,7 +23,7 @@ public class JPAMappingTest {
 	private TestEntityManager entityManager;
 
 	@Resource
-	private DrinkRepository drinkRepo;
+	private RecipeRepository drinkRepo;
 
 	@Resource
 	private LiquorRepository liquorRepo;
@@ -86,14 +86,14 @@ public class JPAMappingTest {
 
 	@Test
 	public void shouldSaveAndLoadDrinks() {
-		Drink drink = new Drink("drink", null, null, null, null, null, null, null, null, null);
+		Recipe drink = new Recipe("drink", null, null, null, null, null, null, null, null, null);
 		drink = drinkRepo.save(drink);
 		Long drinkId = drink.getId();
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Optional<Drink> result = drinkRepo.findById(drinkId);
+		Optional<Recipe> result = drinkRepo.findById(drinkId);
 		drink = result.get();
 		assertThat(drink.getName(), is("drink"));
 	}
