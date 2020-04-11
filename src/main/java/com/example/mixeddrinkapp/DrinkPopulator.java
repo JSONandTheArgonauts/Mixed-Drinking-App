@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class DrinkPopulator implements CommandLineRunner {
 	
 	@Resource
-	private RecipeRepository drinkRepo;
+	private RecipeRepository recipeRepo;
 	
 	@Resource
 	private LiquorRepository liquorRepo;
@@ -49,11 +49,11 @@ public class DrinkPopulator implements CommandLineRunner {
 		
 		//Finished Drinks Listed here (Name, Liquor 1 2 3, Mixer 1 2 3, Garnish 1 2 3)
 		Recipe screwdriver = new Recipe("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "");
-		screwdriver = drinkRepo.save(screwdriver);
+		screwdriver = recipeRepo.save(screwdriver);
 		Recipe oldFasioned = new Recipe("Old Fasioned", "Burbon", "", "", "Bitters", "", "", "Orange Slice", "Cherry", "");
-		oldFasioned = drinkRepo.save(oldFasioned);
+		oldFasioned = recipeRepo.save(oldFasioned);
 		Recipe ginAndTonic = new Recipe("Gin and Tonic", "Gin", "", "", "Tonic Water", "", "", "Lime Slice", "", "");
-		ginAndTonic = drinkRepo.save(ginAndTonic);
+		ginAndTonic = recipeRepo.save(ginAndTonic);
 		
 	}
 	
