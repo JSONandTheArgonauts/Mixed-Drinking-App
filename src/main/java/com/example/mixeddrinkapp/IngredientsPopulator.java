@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 public class IngredientsPopulator implements CommandLineRunner {
 	
 	@Resource
-	private RecipeRepository recipeRepo;
-	
-	@Resource
 	private LiquorRepository liquorRepo;
 	
 	@Resource
