@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DrinkPopulator implements CommandLineRunner {
+public class IngredientsPopulator implements CommandLineRunner {
 	
 	@Resource
 	private RecipeRepository recipeRepo;
@@ -49,13 +49,6 @@ public class DrinkPopulator implements CommandLineRunner {
 		Garnish orange = new Garnish("Orange Slice", true);
 		orange = garnishRepo.save(orange);
 		
-		//Finished Drinks Listed here (Name, Liquor 1 2 3, Mixer 1 2 3, Garnish 1 2 3)
-		Recipe screwdriver = new Recipe("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "");
-		screwdriver = recipeRepo.save(screwdriver);
-		Recipe oldFasioned = new Recipe("Old Fasioned", "Burbon", "", "", "Bitters", "", "", "Orange Slice", "Cherry", "");
-		oldFasioned = recipeRepo.save(oldFasioned);
-		Recipe ginAndTonic = new Recipe("Gin and Tonic", "Gin", "", "", "Tonic Water", "", "", "Lime Slice", "", "");
-		ginAndTonic = recipeRepo.save(ginAndTonic);
 		
 	}
 	
