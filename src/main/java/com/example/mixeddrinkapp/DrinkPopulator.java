@@ -3,7 +3,9 @@ package com.example.mixeddrinkapp;
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DrinkPopulator implements CommandLineRunner {
 	
 	@Resource
