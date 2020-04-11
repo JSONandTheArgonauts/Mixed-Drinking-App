@@ -19,6 +19,12 @@ public class RecipeController {
 	
 	@Resource
 	private LiquorRepository liquorRepo;
+	
+	@Resource
+	private MixerRepository mixerRepo;
+	
+	@Resource
+	private GarnishRepository garnishRepo;
 
 	@RequestMapping("/show-recipe")
 	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) {
@@ -37,7 +43,9 @@ public class RecipeController {
 	
 	@RequestMapping("/show-ingredients")
 	public String findAllLiquors(Model model) {
-		model.addAttribute("liquorsModel", liquorRepo.findAll());
+		model.addAttribute("liquorModel", liquorRepo.findAll());
+		model.addAttribute("mixerModel", mixerRepo.findAll());
+		model.addAttribute("garnishModel", garnishRepo.findAll());
 		return ("ingredients");
 
 	}
