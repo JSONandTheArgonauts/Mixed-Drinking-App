@@ -24,12 +24,12 @@ public class Liquor {
 		this.inStock = inStock;
 	}
 
-	@ManyToMany(mappedBy = "liquors")
-	private Collection<Drink> drinks;
-
-	public Collection<Drink> getDrinks() {
-		return drinks;
-	}
+//	@ManyToMany(mappedBy = "liquors")
+//	private Collection<Drink> drinks;
+//
+//	public Collection<Drink> getDrinks() {
+//		return drinks;
+//	}
 
 	public void setDrinks(Collection<Drink> drinks) {
 		this.drinks = drinks;

@@ -26,7 +26,7 @@ public class LiquorController {
 
 	}
 
-	@RequestMapping("/show-ingredients")
+	@RequestMapping("/show-liquors")
 	public String findAllLiquors(Model model) {
 		model.addAttribute("liquorsModel", liquorRepo.findAll());
 		return ("ingredients");
