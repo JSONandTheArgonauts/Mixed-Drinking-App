@@ -22,11 +22,11 @@ public class DrinkPopulator implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		//Liquors listed here
-		Liquor vodkaPlain = new Liquor("Vodka", "Plain", true);
+		Liquor vodkaPlain = new Liquor("Vodka", "Standard", true);
 		vodkaPlain = liquorRepo.save(vodkaPlain);
-		Liquor burbonPlain = new Liquor("Burbon", "Plain", false);
+		Liquor burbonPlain = new Liquor("Burbon", "Standard", false);
 		burbonPlain = liquorRepo.save(burbonPlain);
-		Liquor ginPlain = new Liquor("Gin", "Plain", true);
+		Liquor ginPlain = new Liquor("Gin", "Standard", true);
 		ginPlain = liquorRepo.save(ginPlain);
 		
 		//Mixers listed here
