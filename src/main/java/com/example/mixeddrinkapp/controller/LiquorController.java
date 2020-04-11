@@ -30,24 +30,15 @@ public class LiquorController {
 	}
 
 	@RequestMapping("/add-liquor")
-	public String addLiquor(String liquorName, String liquorFlavor, Boolean liquorInStock) {
+	public String addLiquor(String liquorName, String liquorFlavor) {
 		Liquor newLiquor = liquorRepo.findByName(liquorName);
 
 		if (newLiquor == null) {
-			newLiquor = new Liquor(liquorName, liquorFlavor, liquorInStock);
+			newLiquor = new Liquor(liquorName, liquorFlavor, true);
 			liquorRepo.save(newLiquor);
 		}
 		return "redirect:/show-ingredients";
 	}
 	
-//	@ModelAttribute("liquor")
-//	public Liquor prepareGuestModel() {
-//	    return new Liquor();
-//	}
-//	
-//	@RequestMapping(value = "/ingredients", method = RequestMethod.POST)
-//	public String insertLiquor(Liquor newLiquor, Model model) {
-//		liquorRepo.insertNewLiquor(newLiquor);
-//		
-//	}
+
 }
