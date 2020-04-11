@@ -32,11 +32,29 @@
       </div>
     </form>
 
+<!---------------------------------------->
+    <form action="#" th:action="@{/saveLiquor}" th:object="${liquor}" method="post">
+              <label th:text="#{msg.id}" />
+              <input type="number" th:field="*{id}" />
+              <label th:text="#{msg.name}" />
+              <input type="text" th:field="*{name}" />
+
+
+              <td><input type="submit" value="Submit" />
+
+
+  </form>
+<!-------------------------WIP-------------------->
+
+
+
+
     <header>
       <h1>List Of In Stock Ingredients</h1>
     </header>
 
     <p>Here is the list of ingredients you have to make drinks:</p>
+
     <h2>Liquor</h2>
     <ul>
       <li th:each="liquor: ${liquorModel}">
@@ -46,6 +64,7 @@
         ></a>
       </li>
     </ul>
+
     <h2>Mixer</h2>
     <ul>
       <li th:each="mixer: ${mixerModel}">
@@ -61,10 +80,13 @@
         ></a>
       </li>
     </ul>
+
     <form method="POST">
+
       <div>
         <button th:formaction="@{show-recipes}">Show Available Recipes</button>
       </div>
+
     </form>
   </body>
 </html>

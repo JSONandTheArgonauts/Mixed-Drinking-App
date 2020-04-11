@@ -40,6 +40,6 @@ public class MixerController {
 			newMixer = new Mixer(mixerName, mixerInStock);
 			mixerRepo.save(newMixer);
 		}
-		return "redirect:/show-mixers";
+		return "redirect:/show-ingredients";
 	}
 }
