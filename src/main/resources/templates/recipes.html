@@ -16,11 +16,14 @@
       <img th:src="@{images/ingredients.jpg}" />
 
       <ul>
-        <li th:each="drink: ${drinks}">
-          <a th:href="|/drink?id=${drink.id}|" th:text="${drink.name}"></a>
+        <li th:each="recipe: ${recipes}">
+          <a
+            th:href="|/recipe?id=${recipe.id}|"
+            th:text="${recipe.drinkName}"
+          ></a>
         </li>
       </ul>
-      <section id="DrinkResultsLink">
+      <section id="RecipeResultsLink">
         <a href="http://localhost:8080/show-ingredients"
           >Go Back to Ingredients</a
         >

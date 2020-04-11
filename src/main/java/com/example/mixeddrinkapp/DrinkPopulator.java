@@ -30,6 +30,8 @@ public class DrinkPopulator implements CommandLineRunner {
 		burbonPlain = liquorRepo.save(burbonPlain);
 		Liquor ginPlain = new Liquor("Gin", "Standard", true);
 		ginPlain = liquorRepo.save(ginPlain);
+		Liquor whiskeyPlain = new Liquor("Whiskey", "Standard", true);
+		whiskeyPlain = liquorRepo.save(whiskeyPlain);
 		
 		//Mixers listed here
 		Mixer orangeJuice = new Mixer("Orange Juice", true);

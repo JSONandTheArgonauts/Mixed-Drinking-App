@@ -37,12 +37,12 @@ public class RecipeController {
 	@RequestMapping("/show-recipes")
 	public String findAllRecipes(Model model) {
 		model.addAttribute("recipeModel", recipeRepo.findAll());
-		return "recipes";
+		return ("recipes");
 
 	}
 	
 	@RequestMapping("/show-ingredients")
-	public String findAllLiquors(Model model) {
+	public String findAllIngredients(Model model) {
 		model.addAttribute("liquorModel", liquorRepo.findAll());
 		model.addAttribute("mixerModel", mixerRepo.findAll());
 		model.addAttribute("garnishModel", garnishRepo.findAll());
