@@ -15,21 +15,21 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
-import com.example.mixeddrinkapp.controller.DrinkController;
+import com.example.mixeddrinkapp.controller.RecipeController;
 
 public class DrinkControllerTest {
 	
 	@InjectMocks
-	private DrinkController underTest;
+	private RecipeController underTest;
 	
 	@Mock
-	private Drink drink;
+	private Recipe drink;
 	
 	@Mock
-	private Drink anotherDrink;
+	private Recipe anotherDrink;
 	
 	@Mock
-	private DrinkRepository drinkRepo;
+	private RecipeRepository drinkRepo;
 	
 	
 	@Mock
@@ -72,16 +72,16 @@ public class DrinkControllerTest {
 		long drinkId = 1L;
 		when(drinkRepo.findById(drinkId)).thenReturn(Optional.of(drink));
 		
-		underTest.findOneDrink(drinkId, model);
+		underTest.findOneRecipe(drinkId, model);
 		verify(model).addAttribute("drinks", drink);
 	}
 	
 	@Test
 	public void shouldAddAllDrinksToModel() {
-		Collection<Drink> allDrinks = Arrays.asList(drink, anotherDrink);
+		Collection<Recipe> allDrinks = Arrays.asList(drink, anotherDrink);
 		when(drinkRepo.findAll()).thenReturn(allDrinks);
 		
-		underTest.findAllDrinks(model);
+		underTest.findAllRecipes(model);
 		verify(model).addAttribute("drinks", allDrinks);
 	}
 	

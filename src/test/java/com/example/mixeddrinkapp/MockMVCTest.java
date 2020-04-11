@@ -14,23 +14,23 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.mixeddrinkapp.controller.DrinkController;
+import com.example.mixeddrinkapp.controller.RecipeController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest(DrinkController.class)
+@WebMvcTest(RecipeController.class)
 public class MockMVCTest {
 
 	@Resource
 	private MockMvc mvc;
 
 	@MockBean
-	private DrinkRepository drinkRepo;
+	private RecipeRepository drinkRepo;
 
 	@Mock
-	private Drink drink;
+	private Recipe drink;
 
 	@Mock
-	private Drink anotherDrink;
+	private Recipe anotherDrink;
 	
 	@Test
 	public void shouldRouteToAllDrinks() throws Exception {
