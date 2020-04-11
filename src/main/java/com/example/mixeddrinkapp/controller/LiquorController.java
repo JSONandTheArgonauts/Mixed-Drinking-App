@@ -26,13 +26,6 @@ public class LiquorController {
 
 	}
 
-	@RequestMapping("/show-ingredients")
-	public String findAllLiquors(Model model) {
-		model.addAttribute("liquorsModel", liquorRepo.findAll());
-		return ("ingredients");
-
-	}
-
 	@RequestMapping("/add-liquor")
 	public String addLiquor(String liquorName, String liquorFlavor, Boolean liquorInStock) {
 		Liquor newLiquor = liquorRepo.findByName(liquorName);
