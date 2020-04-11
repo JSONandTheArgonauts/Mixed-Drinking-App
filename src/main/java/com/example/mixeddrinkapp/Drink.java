@@ -14,6 +14,7 @@ public class Drink {
 	@GeneratedValue
 	private Long id;
 	private String drinkName;
+<<<<<<< HEAD
 
 	@ManyToMany
 	private Collection<Liquor> liquors;
@@ -22,6 +23,13 @@ public class Drink {
 	public Drink() {
 	}
 
+=======
+	
+	
+//	default constructor
+	public Drink() {}
+	
+>>>>>>> e3f40cb77ac8bd1e73babb8cf1dc6d0e68bcff8f
 	public Drink(String drinkName, String liquor1, String liquor2, String liquor3, String mixer1, String mixer2,
 			String mixer3, String garnish1, String garnish2, String garnish3) {
 		this.drinkName = drinkName;
