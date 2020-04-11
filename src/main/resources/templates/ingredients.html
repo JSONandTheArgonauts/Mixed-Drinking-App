@@ -1,62 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://ww.thymeleaf.org">
-<head>
+  <head>
     <title>Ingredients List</title>
     <link rel="stylesheet" href="css/mixed-drinking-app.css" />
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>Add or Delete Ingredients</h1>
 
-    <form method ="POST">
-        <div>
-            <label>Add Liquor</label>
-            <input type="text" name="liquorName" />
-        </div>
-        <div>
-            <button th:formaction="@{add-liquor}">Add Liquor</button>
-        </div>
-        <div>
-            <label>Add Mixer</label>
-            <input type="text" name="mixerName" />
-        </div>
-        <div>
-            <button th:formaction="@{add-mixer}">Add Mixer</button>
-        </div>
-        <div>
+    <form method="POST">
+      <div>
+        <label>Add Liquor</label>
+        <input type="text" name="liquorName" />
+      </div>
+      <div>
+        <button th:formaction="@{add-liquor}">Add Liquor</button>
+      </div>
+      <div>
+        <label>Add Mixer</label>
+        <input type="text" name="mixerName" />
+      </div>
+      <div>
+        <button th:formaction="@{add-mixer}">Add Mixer</button>
+      </div>
+      <div>
         <label>Add Garnish</label>
         <input type="text" name="garnishName" />
-        </div>
-        <div>
-            <button th:formaction="@{add-garnish}">Add Garnish</button>
-        </div>
+      </div>
+      <div>
+        <button th:formaction="@{add-garnish}">Add Garnish</button>
+      </div>
     </form>
 
     <header>
-        <h1>List Of In Stock Ingredients</h1>
+      <h1>List Of In Stock Ingredients</h1>
     </header>
 
     <p>Here is the list of ingredients you have to make drinks:</p>
     <h2>Liquor</h2>
     <ul>
-        <li th:each="liquor: ${liquorModel}"><a th:href="@{/show-liquor(id=${liquor.id})}"
-            th:text="${liquor.name}"></a></li>
+      <li th:each="liquor: ${liquorModel}">
+        <a
+          th:href="@{/show-liquor(id=${liquor.id})}"
+          th:text="${liquor.name}"
+        ></a>
+      </li>
     </ul>
     <h2>Mixer</h2>
     <ul>
-        <li th:each="mixer: ${mixerModel}"><a th:href="@{/show-mixer(id=${mixer.id})}"
-            th:text="${mixer.name}"></a></li>
+      <li th:each="mixer: ${mixerModel}">
+        <a th:href="@{/show-mixer(id=${mixer.id})}" th:text="${mixer.name}"></a>
+      </li>
     </ul>
     <h2>Garnish</h2>
     <ul>
-        <li th:each="garnish: ${garnishModel}"><a th:href="@{/show-garnish(id=${garnish.id})}"
-            th:text="${garnish.name}"></a></li>
+      <li th:each="garnish: ${garnishModel}">
+        <a
+          th:href="@{/show-garnish(id=${garnish.id})}"
+          th:text="${garnish.name}"
+        ></a>
+      </li>
     </ul>
-
-
-
-    
-
-</body>
+    <form method="POST">
+      <div>
+        <button th:formaction="@{show-recipes}">Show Available Recipes</button>
+      </div>
+    </form>
+  </body>
 </html>
