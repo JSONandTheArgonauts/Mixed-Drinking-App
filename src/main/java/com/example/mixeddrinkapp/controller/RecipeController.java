@@ -30,7 +30,7 @@ public class RecipeController {
 	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) {
 		Optional<Recipe> recipe = recipeRepo.findById(id);
 		model.addAttribute("recipeModel", recipe.get());
-		return "recipe";
+		return ("recipe");
 
 	}
 
