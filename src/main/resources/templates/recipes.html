@@ -16,11 +16,8 @@
       <img th:src="@{images/ingredients.jpg}" />
 
       <ul>
-        <li th:each="recipe: ${recipes}">
-          <a
-            th:href="|/recipe?id=${recipe.id}|"
-            th:text="${recipe.drinkName}"
-          ></a>
+        <li th:each="recipe: ${recipeModel}">
+          <a th:text="${recipe.name}"></a>
         </li>
       </ul>
       <section id="RecipeResultsLink">

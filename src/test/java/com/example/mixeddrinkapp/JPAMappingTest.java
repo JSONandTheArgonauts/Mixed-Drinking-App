@@ -103,17 +103,17 @@ public class JPAMappingTest {
 		Liquor liquor = liquorRepo.save(new Liquor("liquor", "flavor", true));
 		Liquor anotherLiquor = liquorRepo.save(new Liquor("anotherLiquor", "flavor", true));
 
-		Drink drink = new Drink("name", "liquor", "anotherLiquor", "", "", "", "", "", "", "");
-		drink = drinkRepo.save(drink);
-		Long drinkId = drink.getId();
+		Recipe recipe = new Recipe("name", "liquor", "anotherLiquor", "", "", "", "", "", "", "");
+		recipe = drinkRepo.save(recipe);
+		Long recipeId = recipe.getId();
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Optional<Drink> result = drinkRepo.findById(drinkId);
-		drink = result.get();
+		Optional<Recipe> result = drinkRepo.findById(recipeId);
+		recipe = result.get();
 
-		assertThat(drink.getLiquors(), containsInAnyOrder(liquor, anotherLiquor));
+		assertThat(recipe.getLiquors(), containsInAnyOrder(liquor, anotherLiquor));
 	}
 
 //	@Test
