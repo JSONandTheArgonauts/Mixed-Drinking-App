@@ -15,8 +15,8 @@ public class RecipesPopulator implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 
-		//Finished Drinks Listed here (Name, Liquor 1 2 3, Mixer 1 2 3, Garnish 1 2 3, Instructions)
-		Recipe screwdriver = new Recipe("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "", "/static/images/screwdriver.jpg", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.");
+		//Finished Drinks Listed here (Name, Liquor 1 2 3, Mixer 1 2 3, Garnish 1 2 3, image, Instructions)
+		Recipe screwdriver = new Recipe("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "", "/images/screwdriver.jpg", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.");
 		screwdriver = recipeRepo.save(screwdriver);
 		Recipe oldFasioned = new Recipe("Old Fasioned", "Burbon", "", "", "Bitters", "", "", "Orange Peel", "Cherry", "Sugar Cube", "/images/oldfasioned.jpg", "Place the sugar cube in an Old Fashioned glass. \n" + 
 				"Wet it down with Angostura bitters and a short splash of club soda.\n" + 
@@ -42,7 +42,7 @@ public class RecipesPopulator implements CommandLineRunner {
 		Recipe sidecar = new Recipe("Sidecar", "Brandy", "Triple Sec", "", "Lemon Juice", "", "", "Lemon Slice", "", "", "/images/sidecar.jpg", "Pour 2oz brandy, 3/4 ounce triple sec, and 3/4oz lemon juice into a cocktail mixer. Shake well and strain into \n" +
 				"a cocktail glass. Garnish with lemon slice.");
 		sidecar = recipeRepo.save(sidecar);
-		Recipe pinaColada = new Recipe("Piña Colada", "White Rum", "", "", "Coconut Cream", "Pinapple Juice", "", "Pinapple Slice", "Cherry", "", "/images/piñacolada.jpg", "Mix 3oz pineapple juice, 1oz white rum, and 1oz coconut cream into crushed ice. \n" +
+		Recipe pinaColada = new Recipe("Piña Colada", "White Rum", "", "", "Coconut Cream", "Pinapple Juice", "", "Pinapple Slice", "Cherry", "", "/images/pinacolada.jpg", "Mix 3oz pineapple juice, 1oz white rum, and 1oz coconut cream into crushed ice. \n" +
 				"Alternitavely a blender can be used, mix until smooth. Pour into a chilled glass and garnish with a slice of pinapple and a cherry");
 		pinaColada = recipeRepo.save(pinaColada);
 		Recipe bloodyMary = new Recipe("Bloody Mary", "Vodka", "", "", "Tomato Juice", "Hot Sauce", "Worcestershire Sauce", "Celery", "Salt", "Pepper", "/images/bloodymary.jpg", "Add dashes of worcestershire sauce, hot sauce (typically tobasco but falls \n" +

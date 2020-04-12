@@ -10,8 +10,10 @@
     </header>
 
     <main>
-      <img th:src="recipe.image" />
       <div id="liquors">
+        <img th:each="recipe: ${recipeModel}" th:src="${recipeModel.image}" />
+
+        <h3>Liquors Required</h3>
         <ul>
           <li
             th:each="recipe: ${recipeModel}"
@@ -28,6 +30,7 @@
         </ul>
       </div>
       <div id="mixers">
+        <h3>Mixers Required</h3>
         <ul>
           <li
             th:each="recipe: ${recipeModel}"
@@ -44,6 +47,7 @@
         </ul>
       </div>
       <div id="garnish">
+        <h3>Garnish Required</h3>
         <ul>
           <li
             th:each="recipe: ${recipeModel}"
