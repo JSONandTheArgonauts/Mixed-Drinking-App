@@ -17,9 +17,11 @@
 
       <ul>
         <li th:each="recipe: ${recipeModel}">
-          <a th:href="|/recipe?id=${recipe.id}|" th:text="${recipe.name}"></a>
+          <a th:href="@{/show-recipe(id=${recipe.id})}"
+          th:text="${recipe.name}"></a>
         </li>
       </ul>
+
       <section id="RecipeResultsLink">
         <a href="http://localhost:8080/show-ingredients"
           >Go Back to Ingredients</a

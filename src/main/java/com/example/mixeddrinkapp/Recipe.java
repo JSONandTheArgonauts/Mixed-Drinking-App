@@ -10,7 +10,7 @@ public class Recipe {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
+	private String drinkName;
 	
 //	@ManyToMany
 //	private Collection<Recipe> liquors;
@@ -20,7 +20,7 @@ public class Recipe {
 
 	public Recipe(String drinkName, String liquor1, String liquor2, String liquor3, String mixer1, String mixer2,
 			String mixer3, String garnish1, String garnish2, String garnish3) {
-		this.name = drinkName;
+		this.drinkName = drinkName;
 	}
 
 	public Long getId() {
@@ -30,7 +30,7 @@ public class Recipe {
 
 	public String getName() {
 
-		return name;
+		return drinkName;
 	}
 
 //	public Collection<Recipe> getLiquors() {
