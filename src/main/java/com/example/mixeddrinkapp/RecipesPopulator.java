@@ -34,7 +34,10 @@ public class RecipesPopulator implements CommandLineRunner {
 		sidecar = recipeRepo.save(sidecar);
 		Recipe pinaColada = new Recipe("Piña Colada", "White Rum", "", "", "Coconut Cream", "Pinapple Juice", "", "Pinapple Slice", "Cherry", "");
 		pinaColada = recipeRepo.save(pinaColada);
-		
+		Recipe bloodyMary = new Recipe("Bloody Mary", "Vodka", "", "", "Tomato Juice", "Hot Sauce", "", "Celery", "", "");
+		bloodyMary = recipeRepo.save(bloodyMary);
+		Recipe manhattan = new Recipe("Manhattan", "Rye Whisky", "Vermouth", "", "Angostura bitters", "", "", "Cherry", "", "");
+		manhattan = recipeRepo.save(manhattan);
 	}
 
 }
