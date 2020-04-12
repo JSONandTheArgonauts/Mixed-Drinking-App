@@ -12,8 +12,27 @@
     <main>
       <div id="liquors">
         <ul>
-          <li th:each="recipe: ${recipeModel}"></li>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.liquor1}"></li>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.liquor2}"></li>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.liquor3}"></li>
         </ul>
+      </div>
+      <div id="mixers">
+        <ul>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.mixer1}"></li>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.mixer2}"></li>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.mixer3}"></li>
+        </ul>
+      </div>
+      <div id="garnish">
+        <ul>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.garnish1}"></li>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.garnish2}"></li>
+          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.garnish3}"></li>
+        </ul>
+      </div>
+      <div id="instructions">
+        <p th:text="${recipeModel.instructions}"></p>
       </div>
 
       <section id="recipesLink">
