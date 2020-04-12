@@ -6,7 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mixeddrinkapp.Liquor;
@@ -37,13 +40,15 @@ public class LiquorController {
 =======
 >>>>>>> af5928bae91a0a0cf2c3a7169ae6aaf93652218f
 	@RequestMapping("/add-liquor")
-	public String addLiquor(String liquorName, String liquorFlavor, Boolean liquorInStock) {
+	public String addLiquor(String liquorName, String liquorFlavor) {
 		Liquor newLiquor = liquorRepo.findByName(liquorName);
 
 		if (newLiquor == null) {
-			newLiquor = new Liquor(liquorName, liquorFlavor, liquorInStock);
+			newLiquor = new Liquor(liquorName, liquorFlavor, true);
 			liquorRepo.save(newLiquor);
 		}
-		return "redirect:/show-liquors";
+		return "redirect:/show-ingredients";
 	}
+	
+
 }

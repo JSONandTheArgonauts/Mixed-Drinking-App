@@ -33,13 +33,13 @@ public class MixerController {
 	}
 
 	@RequestMapping("/add-mixer")
-	public String addMixer(String mixerName, Boolean mixerInStock) {
+	public String addMixer(String mixerName) {
 		Mixer newMixer = mixerRepo.findByName(mixerName);
 
 		if (newMixer == null) {
-			newMixer = new Mixer(mixerName, mixerInStock);
+			newMixer = new Mixer(mixerName, true);
 			mixerRepo.save(newMixer);
 		}
-		return "redirect:/show-mixers";
+		return "redirect:/show-ingredients";
 	}
 }

@@ -33,13 +33,13 @@ public class GarnishController {
 	}
 	
 	@RequestMapping("/add-garnish")
-	public String addGarnish(String garnishName, Boolean garnishInStock) {
+	public String addGarnish(String garnishName) {
 		Garnish newGarnish = garnishRepo.findByName(garnishName);
 		
 		if(newGarnish==null) {
-			newGarnish = new Garnish(garnishName, garnishInStock);
+			newGarnish = new Garnish(garnishName, true);
 			garnishRepo.save(newGarnish);
 		}
-		return "redirect:/show-garnishs";
+		return "redirect:/show-ingredients";
 	}
 }
