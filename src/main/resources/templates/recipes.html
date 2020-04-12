@@ -17,7 +17,7 @@
 
       <ul>
         <li th:each="recipe: ${recipeModel}">
-          <a th:text="${recipe.name}"></a>
+          <a th:href="|/recipe?id=${recipe.id}|" th:text="${recipe.name}"></a>
         </li>
       </ul>
       <section id="RecipeResultsLink">
