@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>A Recipe</title>
+    <title th:text="${recipeModel.name}">A Recipe</title>
     <link rel="stylesheet" href="css/mixed-drinking-app.css" />
   </head>
   <body>
     <header>
-      <h1>A single Recipe</h1>
+      <h1 th:text="${recipeModel.name}"></h1>
     </header>
 
     <main>
-      <div th:each="recipe: ${recipe}">
-        <h2 th:text="${recipe.drinkName}"></h2>
-        <img th:src="${recipe.image}" />
-        <p th:text="{recipe.content}"></p>
+      <div id="liquors">
+        <ul>
+          <li th:each="recipe: ${recipeModel}"></li>
+        </ul>
       </div>
+
       <section id="recipesLink">
         <a href="http://localhost:8080/show-recipes"
           >Back to Available Recipes</a
