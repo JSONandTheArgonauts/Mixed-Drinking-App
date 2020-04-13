@@ -11,24 +11,56 @@
 
     <main>
       <div id="liquors">
+        <img th:each="recipe: ${recipeModel}" th:src="${recipeModel.image}" />
+
+        <h3>Liquors Required</h3>
         <ul>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.liquor1}"></li>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.liquor2}"></li>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.liquor3}"></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.liquor1}"
+          ></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.liquor2}"
+          ></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.liquor3}"
+          ></li>
         </ul>
       </div>
       <div id="mixers">
+        <h3>Mixers Required</h3>
         <ul>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.mixer1}"></li>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.mixer2}"></li>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.mixer3}"></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.mixer1}"
+          ></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.mixer2}"
+          ></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.mixer3}"
+          ></li>
         </ul>
       </div>
       <div id="garnish">
+        <h3>Garnish Required</h3>
         <ul>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.garnish1}"></li>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.garnish2}"></li>
-          <li th:each="recipe: ${recipeModel}" th:text="${recipeModel.garnish3}"></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.garnish1}"
+          ></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.garnish2}"
+          ></li>
+          <li
+            th:each="recipe: ${recipeModel}"
+            th:text="${recipeModel.garnish3}"
+          ></li>
         </ul>
       </div>
       <div id="instructions">
