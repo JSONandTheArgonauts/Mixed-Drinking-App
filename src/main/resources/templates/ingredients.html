@@ -31,6 +31,36 @@
         <button th:formaction="@{add-garnish}">Add Garnish</button>
       </div>
     </form>
+     
+<!-- Delete buttons start here -->
+
+    <form method ="POST">
+        <div>
+            <br><label>Enter Liquor</label>
+            <input type="text" name="liquorName" />
+        </div>
+        <div>
+           <br><button th:formaction="@{delete-liquor}">Delete Liquor</button>
+        </div>
+		
+        <div> 
+            <br><label>Enter Mixer</label>
+            <input type="text" name="mixerName" />
+        </div>
+        <div>
+            <br><button th:formaction="@{delete-mixer}">Delete Mixer</button>
+        </div>
+        <div>
+           <br><label>Enter Garnish</label>
+           <input type="text" name="garnishName" />
+        </div>
+        <div>
+          <br><button th:formaction="@{delete-garnish}">Delete Garnish</button>
+        </div>
+    
+    </form>
+
+<!-- Delete buttons end  -->
 
 <!---------------------------------------->
     <!--<form action="liquorForm" th:action="@{/ingredients}" th:object="${liquor}" method="post">
