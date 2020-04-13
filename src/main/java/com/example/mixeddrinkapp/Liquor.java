@@ -18,13 +18,22 @@ public class Liquor {
 	private String flavor;
 	private boolean inStock;
 
+	@ManyToMany(mappedBy = "liquors")
+	private Collection<Recipe> recipes;
+
+	public Collection<Recipe> getRecipes() {
+		return recipes;
+	}
+
 	public Liquor(String name, String flavor, boolean inStock) {
 		this.name = name;
 		this.flavor = flavor;
 		this.inStock = inStock;
 	}
 
-	
+	public void setRecipes(Collection<Recipe> recipes) {
+		this.recipes = recipes;
+	}
 
 	// default constructor
 	public Liquor() {
@@ -50,5 +59,4 @@ public class Liquor {
 		return liquorId;
 	}
 
-	
 }

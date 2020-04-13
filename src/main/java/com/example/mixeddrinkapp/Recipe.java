@@ -1,9 +1,14 @@
 package com.example.mixeddrinkapp;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Recipe {
@@ -24,8 +29,8 @@ public class Recipe {
 	@Lob
 	private String instructions;
 
-//	@ManyToMany
-//	private Collection<Recipe> liquors;
+	@ManyToMany
+	private Collection<Liquor> liquors;
 
 	public Recipe() {
 	}
@@ -45,11 +50,16 @@ public class Recipe {
 		this.instructions = instructions;
 	}
 
+	public Recipe(String drinkName, Liquor... liquors) {
+		this.drinkName = drinkName;
+		this.setLiquors(new HashSet<>(Arrays.asList(liquors)));
+	}
+
 	public Long getId() {
 
 		return id;
 	}
-	
+
 	public String getName() {
 		return drinkName;
 	}
@@ -94,11 +104,12 @@ public class Recipe {
 		return instructions;
 	}
 
+	public Collection<Liquor> getLiquors() {
+		return liquors;
+	}
 
-
-//	public Collection<Recipe> getLiquors() {
-//
-//		return liquors;
-//	}
+	public void setLiquors(Collection<Liquor> liquors) {
+		this.liquors = liquors;
+	}
 
 }

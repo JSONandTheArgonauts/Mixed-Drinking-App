@@ -23,7 +23,7 @@ public class JPAMappingTest {
 	private TestEntityManager entityManager;
 
 	@Resource
-	private RecipeRepository drinkRepo;
+	private RecipeRepository recipeRepo;
 
 	@Resource
 	private LiquorRepository liquorRepo;
@@ -86,14 +86,14 @@ public class JPAMappingTest {
 
 	@Test
 	public void shouldSaveAndLoadDrinks() {
-		Recipe drink = new Recipe("drink", null, null, null, null, null, null, null, null, null);
-		drink = drinkRepo.save(drink);
+		Recipe drink = new Recipe("drink", null, null, null, null, null, null, null, null, null, null);
+		drink = recipeRepo.save(drink);
 		Long drinkId = drink.getId();
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Optional<Recipe> result = drinkRepo.findById(drinkId);
+		Optional<Recipe> result = recipeRepo.findById(drinkId);
 		drink = result.get();
 		assertThat(drink.getName(), is("drink"));
 	}
@@ -103,17 +103,17 @@ public class JPAMappingTest {
 		Liquor liquor = liquorRepo.save(new Liquor("liquor", "flavor", true));
 		Liquor anotherLiquor = liquorRepo.save(new Liquor("anotherLiquor", "flavor", true));
 
-		Recipe recipe = new Recipe("name", "liquor", "anotherLiquor", "", "", "", "", "", "", "");
-		recipe = drinkRepo.save(recipe);
-		Long recipeId = recipe.getId();
+		Recipe testRecipe = new Recipe("name", liquor, anotherLiquor);
+		testRecipe = recipeRepo.save(testRecipe);
+		Long recipeId = testRecipe.getId();
 
 		entityManager.flush();
 		entityManager.clear();
 
-		Optional<Recipe> result = drinkRepo.findById(recipeId);
-		recipe = result.get();
+		Optional<Recipe> result = recipeRepo.findById(recipeId);
+		testRecipe = result.get();
 
-		assertThat(recipe.getLiquors(), containsInAnyOrder(liquor, anotherLiquor));
+		assertThat(testRecipe.getLiquors(), containsInAnyOrder(liquor, anotherLiquor));
 	}
 
 //	@Test
