@@ -26,6 +26,7 @@ public class Recipe {
 	private String garnish1;
 	private String garnish2;
 	private String garnish3;
+	private String image;
 	@Lob
 	private String instructions;
 
@@ -36,7 +37,7 @@ public class Recipe {
 	}
 
 	public Recipe(String drinkName, String liquor1, String liquor2, String liquor3, String mixer1, String mixer2,
-			String mixer3, String garnish1, String garnish2, String garnish3, String instructions) {
+			String mixer3, String garnish1, String garnish2, String garnish3, String image, String instructions) {
 		this.drinkName = drinkName;
 		this.liquor1 = liquor1;
 		this.liquor2 = liquor2;
@@ -47,6 +48,7 @@ public class Recipe {
 		this.garnish1 = garnish1;
 		this.garnish2 = garnish2;
 		this.garnish3 = garnish3;
+		this.image = image;
 		this.instructions = instructions;
 	}
 
@@ -98,6 +100,10 @@ public class Recipe {
 
 	public String getGarnish3() {
 		return garnish3;
+	}
+	
+	public String getImage() {
+		return image;		
 	}
 
 	public String getInstructions() {

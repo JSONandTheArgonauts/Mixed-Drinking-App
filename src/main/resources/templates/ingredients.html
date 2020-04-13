@@ -2,7 +2,7 @@
 <html xmlns:th="http://ww.thymeleaf.org">
   <head>
     <title>Ingredients List</title>
-    <link rel="stylesheet" href="css/mixed-drinking-app.css" />
+    <link rel="stylesheet" href="../static/css/mixed-drinking-app.css" />
   </head>
 
   <body>
@@ -11,21 +11,21 @@
     <form method="POST">
       <div>
         <label>Add Liquor</label>
-        <input type="text" name="liquorName" />
+        <input class="one" type="text" name="liquorName" />
       </div>
       <div>
         <button th:formaction="@{add-liquor}">Add Liquor</button>
       </div>
       <div>
         <label>Add Mixer</label>
-        <input type="text" name="mixerName" />
+        <input class="two" type="text" name="mixerName" />
       </div>
       <div>
         <button th:formaction="@{add-mixer}">Add Mixer</button>
       </div>
       <div>
         <label>Add Garnish</label>
-        <input type="text" name="garnishName" />
+        <input class="three" type="text" name="garnishName" />
       </div>
       <div>
         <button th:formaction="@{add-garnish}">Add Garnish</button>
@@ -45,7 +45,7 @@
 
 
     <header>
-      <h1>List Of In Stock Ingredients</h1>
+      <h1>List of in Stock Ingredients</h1>
     </header>
 
     <p>Here is the list of ingredients you have to make drinks:</p>
@@ -77,5 +77,8 @@
       </div>
 
     </form>
+    <footer>
+      <small>Copyright JSON and the Argonauts 2020</small>
+    </footer>
   </body>
   </html>
