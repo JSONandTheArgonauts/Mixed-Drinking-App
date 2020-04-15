@@ -42,4 +42,13 @@ public class MixerController {
 		}
 		return "redirect:/show-ingredients";
 	}
+	
+	@RequestMapping("/delete-mixer")
+	public String deleteMixerrByName(String mixerName) {
+		if (mixerRepo.findByName(mixerName) != null){
+			Mixer deletedMixer = mixerRepo.findByName(mixerName);
+			mixerRepo.delete(deletedMixer);
+		}
+		return "redirect:/show-ingredients";
+	}
 }
