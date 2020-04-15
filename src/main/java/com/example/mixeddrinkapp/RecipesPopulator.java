@@ -15,39 +15,56 @@ public class RecipesPopulator implements CommandLineRunner {
 	@Resource
 	private RecipeRepository recipeRepo;
 
+	//Liquors field
 	private Liquor vodka;
+	private Liquor burbon;
+	private Liquor whiteRum;
+	private Liquor gin;
+	private Liquor coffeeLiqueur;
+	//Mixers field
 	private	Mixer orangeJuice;
-	
-	public Set<Liquor> liquorVodka = new HashSet<>(Arrays.asList(vodka));
-	public Set<Mixer> mixers = new HashSet<>(Arrays.asList(orangeJuice));
+	private Mixer bitters;
+	private Mixer coconutCream;
+	private Mixer pinappleJuice;
+	private Mixer tonicWater;
+	private Mixer halfAndHalf;
+	//Recipe Liquor Mapping
+	public Set<Liquor> liquorsScrewdriver = new HashSet<>(Arrays.asList(vodka));
+	public Set<Liquor> liquorsOldFasioned = new HashSet<>(Arrays.asList(burbon));
+	public Set<Liquor> liquorsColada = new HashSet<>(Arrays.asList(whiteRum));
+	public Set<Liquor> liquorsGT = new HashSet<>(Arrays.asList(gin));
+	public Set<Liquor> liquorsWhiteRussian = new HashSet<>(Arrays.asList(vodka, coffeeLiqueur));
+	//Recipe Mixer Mapping
+	public Set<Mixer> mixersScrewdriver = new HashSet<>(Arrays.asList(orangeJuice));
+	public Set<Mixer> mixersOldFasioned = new HashSet<>(Arrays.asList(bitters));
+	public Set<Mixer> mixersColada = new HashSet<>(Arrays.asList(coconutCream, pinappleJuice));
+	public Set<Mixer> mixersGT = new HashSet<>(Arrays.asList(tonicWater));
+	public Set<Mixer> mixersWhiteRussian = new HashSet<>(Arrays.asList(halfAndHalf));
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Recipe screwdriver = new Recipe(liquorVodka, mixers, "ScrewDriver", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.", "/images/screwdriver.jpg");
+		Recipe screwdriver = new Recipe(liquorsScrewdriver, mixersScrewdriver, "ScrewDriver", "/images/screwdriver.jpg", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.");
 		screwdriver = recipeRepo.save(screwdriver);
 		
-		Recipe longIsland = new Recipe(liquorVodka, mixers, "Long Island", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.", "/images/screwdriver.jpg");
-		longIsland = recipeRepo.save(longIsland);
+		Recipe oldFasioned = new Recipe(liquorsOldFasioned, mixersOldFasioned, "Old Fasioned", "/images/oldfasioned.jpg", "Place the sugar cube in an Old Fashioned glass. \n" + 
+				"Wet it down with Angostura bitters and a short splash of club soda.\n" + 
+				"Crush the sugar with a wooden muddler (or spoon if you don't have one, then rotate the glass so that the sugar grains and bitters give it a lining. \n" + 
+				"Add a large ice cube. Pour in the whiskey. \n" + 
+				"Garnish with an orange peel and cherry, and serve with a stirring rod if you're so inclined.");
+		oldFasioned = recipeRepo.save(oldFasioned);
 		
+		Recipe pinaColada = new Recipe(liquorsColada, mixersColada, "Piña Colada", "/images/pinacolada.jpg", "Mix 3oz pineapple juice, 1oz white rum, and 1oz coconut cream into crushed ice. \n" +
+				"Alternitavely a blender can be used, mix until smooth. Pour into a chilled glass and garnish with a slice of pinapple and a cherry");
+		pinaColada = recipeRepo.save(pinaColada);
 		
+		Recipe ginAndTonic = new Recipe(liquorsGT, mixersGT, "Gin and Tonic", "/images/ginandtonic.jpg", "Take 1 to 3 parts gin (to taste), then 3 parts tonic water and pour over ice in either a rocks or highball glass. \n" + 
+				"Garnish with a slice of lime.");
+		ginAndTonic = recipeRepo.save(ginAndTonic);
 		
-
-//		//Finished Drinks Listed here (Name, Liquor 1 2 3, Mixer 1 2 3, Garnish 1 2 3, image, Instructions)
-//		Recipe screwdriver = new Recipe("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "", "/images/screwdriver.jpg", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.");
-//		screwdriver = recipeRepo.save(screwdriver);
-//		Recipe oldFasioned = new Recipe("Old Fasioned", "Burbon", "", "", "Bitters", "", "", "Orange Peel", "Cherry", "Sugar Cube", "/images/oldfasioned.jpg", "Place the sugar cube in an Old Fashioned glass. \n" + 
-//				"Wet it down with Angostura bitters and a short splash of club soda.\n" + 
-//				"Crush the sugar with a wooden muddler (or spoon if you don't have one, then rotate the glass so that the sugar grains and bitters give it a lining. \n" + 
-//				"Add a large ice cube. Pour in the whiskey. \n" + 
-//				"Garnish with an orange peel and cherry, and serve with a stirring rod if you're so inclined.");
-//		oldFasioned = recipeRepo.save(oldFasioned);
-//		Recipe ginAndTonic = new Recipe("Gin and Tonic", "Gin", "", "", "Tonic Water", "", "", "Lime Slice", "", "", "/images/ginandtonic.jpg", "Take 1 to 3 parts gin (to taste), then 3 parts tonic water and pour over ice in either a rocks or highball glass. \n" + 
-//				"Garnish with a slice of lime.");
-//		ginAndTonic = recipeRepo.save(ginAndTonic);
-//		Recipe whiteRussian = new Recipe("White Russian", "Vodka", "Coffee Liqueur", "", "Half and Half", "", "", "", "", "", "/images/whiterussian.jpg", "Pour 2/3oz coffee liqueur into an Old Fashioned glass filled with ice, then add 1 and 2/3oz vodka into \n" + 
-//				"the glass, then fill the rest with half and half and stil slowly");
-//		whiteRussian = recipeRepo.save(whiteRussian);
+		Recipe whiteRussian = new Recipe(liquorsWhiteRussian, mixersWhiteRussian, "White Russian", "/images/whiterussian.jpg", "Pour 2/3oz coffee liqueur into an Old Fashioned glass filled with ice, then add 1 and 2/3oz vodka into \n" + 
+				"the glass, then fill the rest with half and half and stil slowly");
+		whiteRussian = recipeRepo.save(whiteRussian);
 //		Recipe tomCollins = new Recipe("Tom Collins", "Gin", "", "", "Soda Water", "Lemon Juice", "", "Lemon Slice", "", "", "/images/tomcollins.jpg", "Fill a highball glass with ice. Then mix 1oz lemon juice, 1 1/2oz gin, 2oz soda water, and 1/2oz sugar \n" + 
 //				"syrup in the glass. Garnish with cherry and lemon slice.");
 //		tomCollins = recipeRepo.save(tomCollins);

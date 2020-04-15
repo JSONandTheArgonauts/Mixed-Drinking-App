@@ -24,7 +24,7 @@ public class Recipe{
     
     protected Recipe(){}
     
-    public Recipe(Set<Liquor> liquors, Set<Mixer> mixers, String name, String instructions, String image) {
+    public Recipe(Set<Liquor> liquors, Set<Mixer> mixers, String name, String image,  String instructions) {
         liquors = new HashSet<>();
         mixers = new HashSet<>();
         this.name = name;
