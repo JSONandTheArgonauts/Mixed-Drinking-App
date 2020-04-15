@@ -70,6 +70,8 @@ public class Recipe {
 
 	public String getLiquor1() {
 		return liquor1;
+<<<<<<< HEAD
+=======
 	}
 
 	public String getLiquor2() {
@@ -106,12 +108,52 @@ public class Recipe {
 	
 	public String getImage() {
 		return image;		
+>>>>>>> parent of cdf3269... added mapping
+	}
+
+	public String getLiquor2() {
+		return liquor2;
+	}
+
+	public String getLiquor3() {
+		return liquor3;
+	}
+
+<<<<<<< HEAD
+	public String getMixer1() {
+		return mixer1;
+	}
+
+	public String getMixer2() {
+		return mixer2;
+	}
+
+	public String getMixer3() {
+		return mixer3;
+	}
+
+	public String getGarnish1() {
+		return garnish1;
+	}
+
+	public String getGarnish2() {
+		return garnish2;
+	}
+
+	public String getGarnish3() {
+		return garnish3;
+	}
+	
+	public String getImage() {
+		return image;		
 	}
 
 	public String getInstructions() {
 		return instructions;
 	}
 
+=======
+>>>>>>> parent of cdf3269... added mapping
 	public Collection<Liquor> getLiquors() {
 		return liquors;
 	}
