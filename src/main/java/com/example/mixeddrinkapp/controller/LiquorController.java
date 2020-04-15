@@ -46,5 +46,15 @@ public class LiquorController {
 		}
 		return "redirect:/show-ingredients";
 	}
+	
+	@RequestMapping("/delete-liquor")
+	public String deleteLiquorByName(String liquorName) {
+		if (liquorRepo.findByName(liquorName) != null){
+			Liquor deletedLiquor = liquorRepo.findByName(liquorName);
+			liquorRepo.delete(deletedLiquor);
+		}
+		return "redirect:/show-ingredients";
+		
+	}
 
 }

@@ -42,4 +42,13 @@ public class GarnishController {
 		}
 		return "redirect:/show-ingredients";
 	}
+	
+	@RequestMapping("/delete-garnish")
+	public String deleteGarnishByName(String garnishName) {
+		if (garnishRepo.findByName(garnishName) != null){
+			Garnish deletedGarnish = garnishRepo.findByName(garnishName);
+			garnishRepo.delete(deletedGarnish);
+		}
+		return "redirect:/show-ingredients";	
+	}
 }
