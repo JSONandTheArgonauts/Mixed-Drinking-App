@@ -1,8 +1,7 @@
 package com.example.mixeddrinkapp;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,69 +12,88 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 @Entity
-public class Recipe{
-    private String name;
-    private String image;
-    @Lob
-    private String instructions;
-    @ManyToMany
-    private Set<Liquor> liquors;
-    @ManyToMany
-    private Set<Mixer> mixers;
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Recipe {
 
-    protected Recipe(){}
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String drinkName;
+	private String image;
+	@Lob
+	private String instructions;
+	@ManyToMany
+	private Set<Liquor> liquors;
+	@ManyToMany
+	private Set<Mixer> mixers;
 
-    public Recipe(String name, String instructions, String image) {
-        liquors = new HashSet<>();
-        mixers = new HashSet<>();
-        this.name = name;
-        this.image = image;
-        this.instructions = instructions;
-    }
+	public Recipe() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Recipe(String drinkName, String image, String instructions) {
+		this.drinkName = drinkName;
+		this.image = image;
+		this.instructions = instructions;
+		liquors = new HashSet<>();
+		mixers = new HashSet<>();
+	}
 
-    public void addLiquor(Liquor liquor) {
-        liquors.add(liquor);
-    }
+	public Long getId() {
 
-    public void addMixer(Mixer mixer) {
-        mixers.add(mixer);
-    }
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
-    
-    public String getImage() {
-    	return image;
-    }
-    
-    public String getInstructions() {
-    	return instructions;
-    }
+	public String getName() {
+		return drinkName;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Recipe recipe = (Recipe) o;
-        return Objects.equals(name, recipe.name) &&
-                Objects.equals(id, recipe.id) &&
-        		Objects.equals(image, recipe.image) &&
-        		Objects.equals(instructions, recipe.instructions);
-        		
-    }
+	public String getImage() {
+		return image;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(instructions, image, name, id);
-    }
+	public String getInstructions() {
+		return instructions;
+	}
+
+	public void addLiquor(Liquor liquor) {
+		liquors.add(liquor);
+	}
+
+	public void addMixer(Mixer mixer) {
+		mixers.add(mixer);
+
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((drinkName == null) ? 0 : drinkName.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Recipe other = (Recipe) obj;
+		if (drinkName == null) {
+			if (other.drinkName != null)
+				return false;
+		} else if (!drinkName.equals(other.drinkName))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 }
 
 

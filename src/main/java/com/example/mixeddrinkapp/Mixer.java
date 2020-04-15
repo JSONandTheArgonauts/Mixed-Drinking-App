@@ -1,53 +1,85 @@
 package com.example.mixeddrinkapp;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Mixer{
-    private String name;
-    @Id
-    @GeneratedValue
-    private Long id;
-    @ManyToMany(mappedBy = "mixers")
-    private Set<Recipe> drinks;
+public class Mixer {
 
-    protected Mixer(){}
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    public Mixer(String mixerName) {
-        drinks = new HashSet<>();
-        this.name = mixerName;
-    }
+	private String name;
+	private boolean inStock;
 
-    public String getName() {
-        return name;
-    }
+	@ManyToMany(mappedBy = "mixers")
+	private Set<Recipe> recipes;
 
-    public Long getId() {
-        return id;
-    }
+//	default constructor
+	public Mixer() {
+	}
 
-    public Set<Recipe> getDrinks() {
-        return drinks;
-    }
+	public Mixer(String name, boolean inStock) {
+		this.name = name;
+		this.inStock = inStock;
+		recipes = new HashSet<>();
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Mixer mixer = (Mixer) o;
-        return Objects.equals(name, mixer.name) &&
-                Objects.equals(id, mixer.id);
-    }
+	public String getName() {
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, id);
-    }
+		return name;
+	}
+
+	public boolean inStock() {
+
+		return inStock;
+	}
+
+	public Long getId() {
+
+		return id;
+
+	}
+
+	public Set<Recipe> getDrinks() {
+		
+		return recipes;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mixer other = (Mixer) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
 }

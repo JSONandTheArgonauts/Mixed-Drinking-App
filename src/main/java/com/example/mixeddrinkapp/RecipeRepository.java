@@ -1,13 +1,12 @@
 package com.example.mixeddrinkapp;
 
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
-	Collection<Recipe> findByLiquors(Liquor liquorName);
+	Set<Recipe> findAllByLiquorsContainsAndMixersContains(Liquor liquor, Mixer mixer);
 
-	Collection<Recipe> findByMixers(Mixer mixerName);
-	
 }
