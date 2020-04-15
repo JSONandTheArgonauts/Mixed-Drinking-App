@@ -5,9 +5,9 @@ import java.util.Collection;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
-	
-	Recipe findByDrinkName(String drinkName);
-	
-	Collection<Recipe> findAllByOrderByDrinkNameAsc();
 
+	Collection<Recipe> findByLiquors(Liquor liquorName);
+
+	Collection<Recipe> findByMixers(Mixer mixerName);
+	
 }

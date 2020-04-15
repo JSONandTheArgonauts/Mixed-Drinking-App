@@ -41,10 +41,20 @@ public class LiquorController {
 		Liquor newLiquor = liquorRepo.findByName(liquorName);
 
 		if (newLiquor == null) {
-			newLiquor = new Liquor(liquorName, liquorFlavor, true);
+			newLiquor = new Liquor(liquorName);
 			liquorRepo.save(newLiquor);
 		}
 		return "redirect:/show-ingredients";
+	}
+	
+	@RequestMapping("/delete-liquor")
+	public String deleteLiquorByName(String liquorName) {
+		if (liquorRepo.findByName(liquorName) != null){
+			Liquor deletedLiquor = liquorRepo.findByName(liquorName);
+			liquorRepo.delete(deletedLiquor);
+		}
+		return "redirect:/show-ingredients";
+		
 	}
 
 }

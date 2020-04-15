@@ -37,8 +37,17 @@ public class MixerController {
 		Mixer newMixer = mixerRepo.findByName(mixerName);
 
 		if (newMixer == null) {
-			newMixer = new Mixer(mixerName, true);
+			newMixer = new Mixer(mixerName);
 			mixerRepo.save(newMixer);
+		}
+		return "redirect:/show-ingredients";
+	}
+	
+	@RequestMapping("/delete-mixer")
+	public String deleteMixerrByName(String mixerName) {
+		if (mixerRepo.findByName(mixerName) != null){
+			Mixer deletedMixer = mixerRepo.findByName(mixerName);
+			mixerRepo.delete(deletedMixer);
 		}
 		return "redirect:/show-ingredients";
 	}

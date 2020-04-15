@@ -25,6 +25,12 @@ public class RecipeController {
 	
 	@Resource
 	private GarnishRepository garnishRepo;
+	
+	@RequestMapping("splash-page")
+	public String showSplashPage(Model model) {
+		return ("splash");
+		
+	}
 
 	@RequestMapping("/show-recipe")
 	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) {
@@ -48,5 +54,14 @@ public class RecipeController {
 		model.addAttribute("garnishModel", garnishRepo.findAll());
 		return ("ingredients");
 
+	}
+	
+	@RequestMapping("/show-recipes-by-ingredients")
+	public String findRecipesbyIngredient(String liquorName, String mixerName, Model model) {
+		Liquor liquor = liquorRepo.findByName(liquorName);
+		Mixer mixer = mixerRepo.findByName(mixerName);
+		model.addAttribute("recipeModel", recipeRepo.findByLiquors(liquor));
+		model.addAttribute("recipeModel", recipeRepo.findByMixers(mixer));
+		return ("recipes");
 	}
 }

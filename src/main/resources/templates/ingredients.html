@@ -2,7 +2,12 @@
 <html xmlns:th="http://ww.thymeleaf.org">
   <head>
     <title>Ingredients List</title>
-    <link rel="stylesheet" href="../static/css/mixed-drinking-app.css" />
+    <link
+      th:href="@{/css/mixed-drinking-app.css}"
+      href="../static/css/mixed-drinking-app.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
 
   <body>
@@ -32,17 +37,32 @@
       </div>
     </form>
 
-<!---------------------------------------->
-    <!--<form action="liquorForm" th:action="@{/ingredients}" th:object="${liquor}" method="post">
-              <label for="liquorId" th:text="#{liquor.name}"></label>
-              <input type="text" th:field="*{name}" />
+    <!-- Delete buttons start here -->
 
-              <input type="submit" value="Submit" />
-              </form> -->
-<!-------------------------WIP-------------------->
+    <form method="POST">
+      <div>
+        <label>Delete Liquor</label>
+        <input type="text" name="liquorName" />
+      </div>
+      <div>
+        <button th:formaction="@{delete-liquor}">Delete Liquor</button>
+      </div>
 
-
-
+      <div>
+        <label>Delete Mixer</label>
+        <input type="text" name="mixerName" />
+      </div>
+      <div>
+        <button th:formaction="@{delete-mixer}">Delete Mixer</button>
+      </div>
+      <div>
+        <label>Delete Garnish</label>
+        <input type="text" name="garnishName" />
+      </div>
+      <div>
+        <button th:formaction="@{delete-garnish}">Delete Garnish</button>
+      </div>
+    </form>
 
     <header>
       <h1>List of in Stock Ingredients</h1>
@@ -71,14 +91,16 @@
     </ul>
 
     <form method="POST">
-
       <div>
-        <button th:formaction="@{show-recipes}">Show Available Recipes</button>
+        <button th:formaction="@{/show-recipes-by-ingredients}">Show Available Recipes</button>
       </div>
-
     </form>
+
+    <section id="ReturnHome">
+      <a href="http://localhost:8080/splash-page">Click here to return home</a>
+    </section>
     <footer>
       <small>Copyright JSON and the Argonauts 2020</small>
     </footer>
   </body>
-  </html>
+</html>
