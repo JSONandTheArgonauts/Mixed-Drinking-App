@@ -11,37 +11,42 @@
   </head>
 
   <body>
+<header>
+  <div class="banner">
+    <img src="images/sitebanner.png" />
+  </div>
+</header>
+
+
+
 
     <div class="cool-headings">
-    <h1>Add or Delete Ingredients</h1>
+    <h2>Add or Delete Ingredients</h2>
     </div>
-
+  <div class="addInput">
     <form method="POST">
       <div>
-        <label>Add Liquor</label>
-        <input class="one" type="text" name="liquorName" />
+        <input class="one" type="text" placeholder="Type Your Liquor" name="liquorName" />
       </div>
       <div>
         <button th:formaction="@{add-liquor}">Add Liquor</button>
       </div>
       <div>
-        <label>Add Mixer</label>
-        <input class="two" type="text" name="mixerName" />
+        <input class="two" type="text" placeholder="Type Your Mixer" name="mixerName" />
       </div>
       <div>
         <button th:formaction="@{add-mixer}">Add Mixer</button>
       </div>
       <div>
-        <label>Add Garnish</label>
-        <input class="three" type="text" name="garnishName" />
+        <input class="three" type="text" placeholder="Type Your Garnish" name="garnishName" />
       </div>
       <div>
         <button th:formaction="@{add-garnish}">Add Garnish</button>
       </div>
     </form>
+  </div>
 
-    <!-- Delete buttons start here -->
-
+  <div class="deleteInput">
     <form method="POST">
       <div>
         <label>Delete Liquor</label>
@@ -66,7 +71,7 @@
         <button th:formaction="@{delete-garnish}">Delete Garnish</button>
       </div>
     </form>
-
+  </div>
     <header>
       <h1>List of in Stock Ingredients</h1>
     </header>

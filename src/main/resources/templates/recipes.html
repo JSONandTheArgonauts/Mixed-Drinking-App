@@ -13,7 +13,11 @@
     </header>
 
     <main>
-      <img th:src="@{images/ingredients.jpg}" />
+      <header>
+        <div class="banner">
+          <img src="images/sitebanner.png" />
+        </div>
+      </header>
 
       <ul>
         <li th:each="recipe: ${recipeModel}">
