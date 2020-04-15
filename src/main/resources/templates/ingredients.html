@@ -41,39 +41,28 @@
 
     <form method="POST">
       <div>
-        <br /><label>Enter Liquor</label>
+        <label>Delete Liquor</label>
         <input type="text" name="liquorName" />
       </div>
       <div>
-        <br /><button th:formaction="@{delete-liquor}">Delete Liquor</button>
+        <button th:formaction="@{delete-liquor}">Delete Liquor</button>
       </div>
 
       <div>
-        <br /><label>Enter Mixer</label>
+        <label>Delete Mixer</label>
         <input type="text" name="mixerName" />
       </div>
       <div>
-        <br /><button th:formaction="@{delete-mixer}">Delete Mixer</button>
+        <button th:formaction="@{delete-mixer}">Delete Mixer</button>
       </div>
       <div>
-        <br /><label>Enter Garnish</label>
+        <label>Delete Garnish</label>
         <input type="text" name="garnishName" />
       </div>
       <div>
-        <br /><button th:formaction="@{delete-garnish}">Delete Garnish</button>
+        <button th:formaction="@{delete-garnish}">Delete Garnish</button>
       </div>
     </form>
-
-    <!-- Delete buttons end  -->
-
-    <!---------------------------------------->
-    <!--<form action="liquorForm" th:action="@{/ingredients}" th:object="${liquor}" method="post">
-              <label for="liquorId" th:text="#{liquor.name}"></label>
-              <input type="text" th:field="*{name}" />
-
-              <input type="submit" value="Submit" />
-              </form> -->
-    <!-------------------------WIP-------------------->
 
     <header>
       <h1>List of in Stock Ingredients</h1>
@@ -103,7 +92,7 @@
 
     <form method="POST">
       <div>
-        <button th:formaction="@{show-recipes}">Show Available Recipes</button>
+        <button th:formaction="@{/show-recipes-by-ingredients}">Show Available Recipes</button>
       </div>
     </form>
 

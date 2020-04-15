@@ -56,6 +56,12 @@ public class RecipeController {
 
 	}
 	
-//	@RequestMapping("/show-recipes-by-ingredients")
-//	public String findRecipesbyIngredient(
+	@RequestMapping("/show-recipes-by-ingredients")
+	public String findRecipesbyIngredient(String liquorName, String mixerName, Model model) {
+		Liquor liquor = liquorRepo.findByName(liquorName);
+		Mixer mixer = mixerRepo.findByName(mixerName);
+		model.addAttribute("recipeModel", recipeRepo.findByLiquors(liquor));
+		model.addAttribute("recipeModel", recipeRepo.findByMixers(mixer));
+		return ("recipes");
+	}
 }
