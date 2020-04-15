@@ -1,20 +1,38 @@
-//package com.example.mixeddrinkapp;
-//
-//import javax.annotation.Resource;
-//
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.stereotype.Component;
-//
-//@Component
-//public class RecipesPopulator implements CommandLineRunner {
-//	
-//	@Resource
-//	private RecipeRepository recipeRepo;
-//
-//	@Override
-//	public void run(String... args) throws Exception {
-//		
-//
+package com.example.mixeddrinkapp;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class RecipesPopulator implements CommandLineRunner {
+	
+	@Resource
+	private RecipeRepository recipeRepo;
+
+	private Liquor vodka;
+	private	Mixer orangeJuice;
+	
+	public Set<Liquor> liquorVodka = new HashSet<>(Arrays.asList(vodka));
+	public Set<Mixer> mixers = new HashSet<>(Arrays.asList(orangeJuice));
+	
+	@Override
+	public void run(String... args) throws Exception {
+		
+		Recipe screwdriver = new Recipe(liquorVodka, mixers, "ScrewDriver", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.", "/images/screwdriver.jpg");
+		screwdriver = recipeRepo.save(screwdriver);
+		
+		Recipe longIsland = new Recipe(liquorVodka, mixers, "Long Island", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.", "/images/screwdriver.jpg");
+		longIsland = recipeRepo.save(longIsland);
+		
+		
+		
+
 //		//Finished Drinks Listed here (Name, Liquor 1 2 3, Mixer 1 2 3, Garnish 1 2 3, image, Instructions)
 //		Recipe screwdriver = new Recipe("ScrewDriver", "Vodka", "", "", "Orange Juice", "", "", "Orange Slice", "", "", "/images/screwdriver.jpg", "Add 1 1/2 oz of Vodka in a highball glass over ice, then top off with orange juice. Garnish orange slice is optional.");
 //		screwdriver = recipeRepo.save(screwdriver);
@@ -51,6 +69,6 @@
 //		Recipe manhattan = new Recipe("Manhattan", "Rye Whisky", "Vermouth", "", "Angostura bitters", "", "", "Cherry", "", "", "/images/manhattan.jpg", "Pour 2oz rye whisky, 3/4oz red vermouth, a dash of Angostura bitters, and cherry into a cocktail mixer \n" +
 //		"with ice and stir. Strain into a chilled cocktail glass.");
 //		manhattan = recipeRepo.save(manhattan);
-//	}
-//
-//}
+	}
+
+}

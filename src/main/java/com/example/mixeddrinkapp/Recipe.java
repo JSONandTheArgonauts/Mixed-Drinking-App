@@ -21,15 +21,17 @@ public class Recipe{
     @Id
     @GeneratedValue
     private Long id;
-
+    
     protected Recipe(){}
-
-    public Recipe(String name, String instructions, String image) {
+    
+    public Recipe(Set<Liquor> liquors, Set<Mixer> mixers, String name, String instructions, String image) {
         liquors = new HashSet<>();
         mixers = new HashSet<>();
         this.name = name;
         this.image = image;
         this.instructions = instructions;
+        this.liquors = liquors;
+        this.mixers = mixers;
     }
 
     public String getName() {
@@ -55,6 +57,14 @@ public class Recipe{
     public String getInstructions() {
     	return instructions;
     }
+    
+    public Set<Liquor> getLiquors() {
+    	return liquors;
+    }
+    
+    public Set<Mixer> getMixers() {
+    	return mixers;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -64,13 +74,15 @@ public class Recipe{
         return Objects.equals(name, recipe.name) &&
                 Objects.equals(id, recipe.id) &&
         		Objects.equals(image, recipe.image) &&
-        		Objects.equals(instructions, recipe.instructions);
+        		Objects.equals(instructions, recipe.instructions) &&
+        		Objects.equals(liquors, recipe.liquors) &&
+        		Objects.equals(mixers, recipe.mixers);
         		
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(instructions, image, name, id);
+        return Objects.hash(liquors, mixers, instructions, image, name, id);
     }
 }
 

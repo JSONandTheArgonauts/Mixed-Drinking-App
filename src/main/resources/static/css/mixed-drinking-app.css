@@ -1,38 +1,14 @@
-h1 {
+html {
+    font-family: 'Times New Roman', Times, serif;
+    color: whitesmoke;
+}
+
+h1.cool-heading {
     text-align: center;
+    
 }
 
 body {
-    background-color: lightgreen;
-    font-family: sans-serif;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-
-button {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.one {
-    margin-left: 0.8em;
-}
-
-.two {
-    margin-left: 1.3em;
-}
-
-pre {
-    font-family: sans-serif;
-    text-align: center;
-    font-size: 20px;
-}
-
-#RecipeResultsLink {
-    text-align: center;
+    background-color: rgb(37, 37, 37);
+    
 }

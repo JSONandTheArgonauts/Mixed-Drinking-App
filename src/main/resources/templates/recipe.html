@@ -17,15 +17,7 @@
         <ul>
           <li
             th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.liquor1}"
-          ></li>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.liquor2}"
-          ></li>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.liquor3}"
+            th:text="${recipeModel.liquors}"
           ></li>
         </ul>
       </div>
@@ -34,32 +26,7 @@
         <ul>
           <li
             th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.mixer1}"
-          ></li>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.mixer2}"
-          ></li>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.mixer3}"
-          ></li>
-        </ul>
-      </div>
-      <div id="garnish">
-        <h3>Garnish Required</h3>
-        <ul>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.garnish1}"
-          ></li>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.garnish2}"
-          ></li>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.garnish3}"
+            th:text="${recipeModel.mixers}"
           ></li>
         </ul>
       </div>
