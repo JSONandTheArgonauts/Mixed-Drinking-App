@@ -1,6 +1,9 @@
 package com.example.mixeddrinkapp;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,55 +11,44 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Liquor {
+public class Liquor{
+    private String name;
+    @Id
+    @GeneratedValue
+    private Long id;
+    @ManyToMany(mappedBy = "liquors")
+    private Set<Recipe> drinks;
 
-	@Id
-	@GeneratedValue
-	private Long liquorId;
+    protected Liquor(){}
 
-	private String name;
-	private String flavor;
-	private boolean inStock;
+    public Liquor(String liquorName) {
+        this.name = liquorName;
+        drinks = new HashSet<>();
+    }
 
-	@ManyToMany(mappedBy = "liquors")
-	private Collection<Recipe> recipes;
+    public String getName() {
+        return name;
+    }
 
-	public Collection<Recipe> getRecipes() {
-		return recipes;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Liquor(String name, String flavor, boolean inStock) {
-		this.name = name;
-		this.flavor = flavor;
-		this.inStock = inStock;
-	}
+    public Set<Recipe> getDrinks() {
+        return drinks;
+    }
 
-	public void setRecipes(Collection<Recipe> recipes) {
-		this.recipes = recipes;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Liquor liquor = (Liquor) o;
+        return Objects.equals(name, liquor.name) &&
+                Objects.equals(id, liquor.id);
+    }
 
-	// default constructor
-	public Liquor() {
-	}
-
-	public String getName() {
-
-		return name;
-	}
-
-	public String getFlavor() {
-
-		return flavor;
-	}
-
-	public boolean getInStock() {
-
-		return inStock;
-	}
-
-	public Long getId() {
-
-		return liquorId;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id);
+    }
 }
