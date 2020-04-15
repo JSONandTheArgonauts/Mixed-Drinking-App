@@ -91,7 +91,7 @@ public class RecipesPopulator implements CommandLineRunner {
 				"syrup in the glass. Garnish with cherry and lemon slice.");
 		tomCollins = recipeRepo.save(tomCollins);
 		
-		Recipe martini = new Recipe(liquorsMartini, mixersVermouth, "Martini", "/images/martini.jpg", "Pour 1/2oz dry vermouth and 3oz gin into a cocktail mixer with ice cubes. Stir, or for those who wear tuxes and say their last name \n" + 
+		Recipe martini = new Recipe(liquorsMartini, mixersVermouth, "Martini", "/images/martini.jpg", "Pour 1/2oz dry vermouth, 2oz vodka, and 2oz gin into a cocktail mixer with ice cubes. Stir, or for those who wear tuxes and say their last name \n" + 
 				"before giving their full name, shake well. Strain into chilled martini glass and garnish with olive.");
 		martini = recipeRepo.save(martini);
 		
