@@ -1,109 +1,154 @@
 package com.example.mixeddrinkapp;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
 
-import java.util.Set;
+import java.util.Optional;
+
+import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 public class JPAMappingTest {
 
-	@Autowired
+	@Resource
 	private TestEntityManager entityManager;
 
-	@Autowired
-	private LiquorRepository liquorRepo;
-
-	@Autowired
-	private MixerRepository mixerRepo;
-
-	@Autowired
-	private GarnishRepository garnishRepo;
-
-	@Autowired
+	@Resource
 	private RecipeRepository recipeRepo;
 
+	@Resource
+	private LiquorRepository liquorRepo;
+
+	@Resource
+	private MixerRepository mixerRepo;
+
+	@Resource
+	private GarnishRepository garnishRepo;
+
 	@Test
-	public void drinksShouldHaveLiquorsMixersAndGarnishes() {
-		Liquor testLiquor1 = new Liquor("liquor name", "flavor", true);
-		testLiquor1 = liquorRepo.save(testLiquor1);
-		Liquor testLiquor2 = new Liquor("liquor name 2", "flavor", true);
-		testLiquor2 = liquorRepo.save(testLiquor2);
-
-		Mixer testMixer1 = new Mixer("mixer name", true);
-		testMixer1 = mixerRepo.save(testMixer1);
-		Mixer testMixer2 = new Mixer("mixer name 2", true);
-		testMixer2 = mixerRepo.save(testMixer2);
-
-		Garnish testGarnish = new Garnish("garnish name", true);
-		testGarnish = garnishRepo.save(testGarnish);
-		Garnish testGarnish2 = new Garnish("garnish name 2", true);
-		testGarnish2 = garnishRepo.save(testGarnish2);
-
-		Recipe testDrink1 = new Recipe("drink name", null, null);
-		testDrink1.addLiquor(testLiquor1);
-		testDrink1.addLiquor(testLiquor2);
-		testDrink1.addMixer(testMixer1);
-		recipeRepo.save(testDrink1);
-
-		Recipe testDrink2 = new Recipe("drink name 2", null, null);
-		testDrink2.addLiquor(testLiquor1);
-		testDrink2.addMixer(testMixer1);
-		testDrink2.addMixer(testMixer2);
-		recipeRepo.save(testDrink2);
+	public void shouldSaveAndLoadMixer() {
+		Mixer mixer = mixerRepo.save(new Mixer("mixer", true));
+		Long mixerId = mixer.getId();
 
 		entityManager.flush();
 		entityManager.clear();
-		
-		Liquor retrievedLiquor = liquorRepo.findById(testLiquor1.getId()).get();
-		Liquor retrievedLiquor2 = liquorRepo.findById(testLiquor2.getId()).get();
-		
-		Mixer retrievedMixer = mixerRepo.findById(testMixer1.getId()).get();
-		Mixer retrievedMixer2 = mixerRepo.findById(testMixer2.getId()).get();
-		
-		assertThat(retrievedLiquor.getDrinks()).containsExactlyInAnyOrder(testDrink1, testDrink2);
-		assertThat(retrievedLiquor2.getDrinks()).containsExactlyInAnyOrder(testDrink1);
-		
-		assertThat(retrievedMixer.getDrinks()).containsExactlyInAnyOrder(testDrink1, testDrink2);
-		assertThat(retrievedMixer2.getDrinks()).containsExactlyInAnyOrder(testDrink2);
+
+		Optional<Mixer> result = mixerRepo.findById(mixerId);
+		mixer = result.get();
+		assertThat(mixer.getName(), is("mixer"));
 	}
-	
+
 	@Test
-	public void searchByLiquorNameAndMixerName() {
-		Liquor testLiquor = new Liquor("test liquor", "flavor", true);
-		liquorRepo.save(testLiquor);
-		Liquor testLiquor2 = new Liquor("test liquor 2", "flavor", true);
-		liquorRepo.save(testLiquor2);
-		
-		Mixer testMixer = new Mixer("test mixer", true);
-		mixerRepo.save(testMixer);
-		Mixer testMixer2 = new Mixer("test mixer 2", true);
-		mixerRepo.save(testMixer2);
-		
-		Recipe testDrink = new Recipe("test drink", null, null);
-		testDrink.addLiquor(testLiquor);
-		testDrink.addLiquor(testLiquor2);
-		testDrink.addMixer(testMixer);
-		recipeRepo.save(testDrink);
-		
-		Recipe testDrink2 = new Recipe("test drink 2", "", "");
-		testDrink2.addLiquor(testLiquor);
-		testDrink2.addMixer(testMixer);
-		testDrink2.addMixer(testMixer2);
-		recipeRepo.save(testDrink2);
-		
+	public void shouldGenerateMixerId() {
+		Mixer mixer = mixerRepo.save(new Mixer("mixer", true));
+		Long mixerId = mixer.getId();
+
 		entityManager.flush();
 		entityManager.clear();
-		
-		Set<Recipe> retrievedDrinks = recipeRepo.findAllByLiquorsContainsAndMixersContains(testLiquor, testMixer);
-		assertThat(retrievedDrinks).containsExactlyInAnyOrder(testDrink, testDrink2);
+
+		assertThat(mixerId, is(greaterThan(0L)));
 	}
+
+	@Test
+	public void shouldSaveAndLoadLiquors() {
+		Liquor liquor = liquorRepo.save(new Liquor("liquor", "flavor", true));
+		Long liquorId = liquor.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Optional<Liquor> result = liquorRepo.findById(liquorId);
+		liquor = result.get();
+		assertThat(liquor.getName(), is("liquor"));
+	}
+
+	@Test
+	public void shouldSaveAndLoadGarnishes() {
+		Garnish garnish = garnishRepo.save(new Garnish("garnish", true));
+		Long garnishId = garnish.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Optional<Garnish> result = garnishRepo.findById(garnishId);
+		garnish = result.get();
+		assertThat(garnish.getName(), is("garnish"));
+	}
+
+	@Test
+	public void shouldSaveAndLoadDrinks() {
+		Recipe drink = new Recipe("drink", null, null, null, null, null, null, null, null, null, null);
+		drink = recipeRepo.save(drink);
+		Long drinkId = drink.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Optional<Recipe> result = recipeRepo.findById(drinkId);
+		drink = result.get();
+		assertThat(drink.getName(), is("drink"));
+	}
+
+	@Test
+	public void shouldEstablishDrinktoLiquorRelationship() {
+		Liquor liquor = liquorRepo.save(new Liquor("liquor", "flavor", true));
+		Liquor anotherLiquor = liquorRepo.save(new Liquor("anotherLiquor", "flavor", true));
+
+		Recipe testRecipe = new Recipe("name", liquor, anotherLiquor);
+		testRecipe = recipeRepo.save(testRecipe);
+		Long recipeId = testRecipe.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Optional<Recipe> result = recipeRepo.findById(recipeId);
+		testRecipe = result.get();
+
+		assertThat(testRecipe.getLiquors(), containsInAnyOrder(liquor, anotherLiquor));
+	}
+
+//	@Test
+//	public void shouldFindDrinksForLiquors() {
+//		Liquor liquor = liquorRepo.save(new Liquor("liquor", true));
+//
+//		Drink drink = new Drink("drink", "mixer", "garnish", null, null, null, null, null, null, null);
+//		Drink anotherDrink = drinkRepo.save(new Drink("anotherDrink", "mixer", "garnish", null, null, null, null, null, null, null));
+//
+//		entityManager.flush();
+//		Collection<Drink> drinksForLiquors = drinkRepo.findByLiquorsContains(liquor);
+//
+//		assertThat(drinksForLiquors, contains(drink, anotherDrink));
+//		entityManager.clear();
+//
+//	}
+
+//	@Test
+//	public void shouldSaveMixerToDrinkRelationship() {
+//		Drink drink = new Drink("drink", "mixer", "garnish", null, null, null, null, null, null, null);
+//		Mixer mixer = new Mixer("mixer", true);
+//		Mixer anotherMixer = new Mixer("anotherMixer", true);
+//
+//		drinkRepo.save(drink);
+//		mixerRepo.save(mixer);
+//		mixerRepo.save(anotherMixer);
+//
+//		long drinkId = drink.getId();
+//		
+//		entityManager.flush();
+//		Optional<Drink> result = drinkRepo.findById(drinkId);
+//		drink = result.get();
+//		assertThat(drink.getMixers(), contains(mixer, anotherMixer));
+//		entityManager.clear();
+//
+//	}
 
 }
