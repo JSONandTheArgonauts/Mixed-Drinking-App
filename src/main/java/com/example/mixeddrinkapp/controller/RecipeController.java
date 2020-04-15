@@ -25,6 +25,12 @@ public class RecipeController {
 	
 	@Resource
 	private GarnishRepository garnishRepo;
+	
+	@RequestMapping("splash-page")
+	public String showSplashPage(Model model) {
+		return ("splash");
+		
+	}
 
 	@RequestMapping("/show-recipe")
 	public String findOneRecipe(@RequestParam(value = "id") long id, Model model) {

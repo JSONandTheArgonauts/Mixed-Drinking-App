@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://ww.thymeleaf.org">
-  <link rel="stylesheet" href="css/mixed-drinking-app.css" />
+ <link th:href="@{/css/mixed-drinking-app.css}" href="../static/css/mixed-drinking-app.css" rel="stylesheet" type="text/css" />>
 
   <head>
     <title>Welcome to Mix-IT!</title>
@@ -9,10 +9,10 @@
   <body>
     <h1>Welcome to Mix-It!</h1>
 
-    <p>
+    <pre>
       Bartending can be made up to be quite a serious skill in movies like James
       Bond, Cocktail, Casablanca, and Lost in Translation. Lots of us have
-      desired to look into becoming a cocktail-master wether its to impress your
+      desired to look into becoming a cocktail-master whether its to impress your
       friends at parties, to be frugal and drink at home, or even at times where
       you’re forced to stay inside! It can be quite the daunting task both
       researching the types of drinks that are out there and also comparing to
@@ -21,7 +21,7 @@
       ready. Want to find some new drinks? Even if you don’t have the
       ingredients you need you can find the one or two things you may need to
       pick up at the store to try something new!
-    </p>
+    </pre>
 
     <section id="RecipeResultsLink">
       <a href="http://localhost:8080/show-ingredients"
