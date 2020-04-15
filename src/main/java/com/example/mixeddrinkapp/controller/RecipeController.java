@@ -56,15 +56,6 @@ public class RecipeController {
 
 	}
 	
-	@RequestMapping("/show-recipes-by-ingredients")
-	public String findRecipesbyIngredient(String liquorName, Model model) {
-		Liquor liquor = liquorRepo.findByName(liquorName);
-		model.addAttribute("recipes", recipeRepo.findByRecipeContains(liquor));
-		for (int i=0; i <= 10; i++) {
-			for(liquor = "recipes") {
-				if ()
-				
-			}
-		}
-		}
+//	@RequestMapping("/show-recipes-by-ingredients")
+//	public String findRecipesbyIngredient(
 }

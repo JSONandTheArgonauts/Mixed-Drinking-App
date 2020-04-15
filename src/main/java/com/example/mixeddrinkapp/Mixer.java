@@ -1,42 +1,53 @@
 package com.example.mixeddrinkapp;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Mixer {
+public class Mixer{
+    private String name;
+    @Id
+    @GeneratedValue
+    private Long id;
+    @ManyToMany(mappedBy = "mixers")
+    private Set<Recipe> drinks;
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    protected Mixer(){}
 
-	private String name;
-	private boolean inStock;
+    public Mixer(String mixerName) {
+        drinks = new HashSet<>();
+        this.name = mixerName;
+    }
 
-//	default constructor
-	public Mixer() {
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Mixer(String name, boolean inStock) {
-		this.name = name;
-		this.inStock = inStock;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
+    public Set<Recipe> getDrinks() {
+        return drinks;
+    }
 
-		return name;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mixer mixer = (Mixer) o;
+        return Objects.equals(name, mixer.name) &&
+                Objects.equals(id, mixer.id);
+    }
 
-	public boolean inStock() {
-
-		return inStock;
-	}
-
-	public Long getId() {
-
-		return id;
-
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id);
+    }
 }

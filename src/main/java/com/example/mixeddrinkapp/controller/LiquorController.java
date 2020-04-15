@@ -41,7 +41,7 @@ public class LiquorController {
 		Liquor newLiquor = liquorRepo.findByName(liquorName);
 
 		if (newLiquor == null) {
-			newLiquor = new Liquor(liquorName, liquorFlavor, true);
+			newLiquor = new Liquor(liquorName);
 			liquorRepo.save(newLiquor);
 		}
 		return "redirect:/show-ingredients";
