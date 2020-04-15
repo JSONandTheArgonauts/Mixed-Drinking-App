@@ -2,7 +2,12 @@
 <html xmlns:th="http://ww.thymeleaf.org">
   <head>
     <title>Ingredients List</title>
-     <link th:href="@{/css/mixed-drinking-app.css}" href="../static/css/mixed-drinking-app.css" rel="stylesheet" type="text/css" />
+    <link
+      th:href="@{/css/mixed-drinking-app.css}"
+      href="../static/css/mixed-drinking-app.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
 
   <body>
@@ -31,48 +36,44 @@
         <button th:formaction="@{add-garnish}">Add Garnish</button>
       </div>
     </form>
-     
-<!-- Delete buttons start here -->
 
-    <form method ="POST">
-        <div>
-            <br><label>Enter Liquor</label>
-            <input type="text" name="liquorName" />
-        </div>
-        <div>
-           <br><button th:formaction="@{delete-liquor}">Delete Liquor</button>
-        </div>
-		
-        <div> 
-            <br><label>Enter Mixer</label>
-            <input type="text" name="mixerName" />
-        </div>
-        <div>
-            <br><button th:formaction="@{delete-mixer}">Delete Mixer</button>
-        </div>
-        <div>
-           <br><label>Enter Garnish</label>
-           <input type="text" name="garnishName" />
-        </div>
-        <div>
-          <br><button th:formaction="@{delete-garnish}">Delete Garnish</button>
-        </div>
-    
+    <!-- Delete buttons start here -->
+
+    <form method="POST">
+      <div>
+        <br /><label>Enter Liquor</label>
+        <input type="text" name="liquorName" />
+      </div>
+      <div>
+        <br /><button th:formaction="@{delete-liquor}">Delete Liquor</button>
+      </div>
+
+      <div>
+        <br /><label>Enter Mixer</label>
+        <input type="text" name="mixerName" />
+      </div>
+      <div>
+        <br /><button th:formaction="@{delete-mixer}">Delete Mixer</button>
+      </div>
+      <div>
+        <br /><label>Enter Garnish</label>
+        <input type="text" name="garnishName" />
+      </div>
+      <div>
+        <br /><button th:formaction="@{delete-garnish}">Delete Garnish</button>
+      </div>
     </form>
 
-<!-- Delete buttons end  -->
+    <!-- Delete buttons end  -->
 
-<!---------------------------------------->
+    <!---------------------------------------->
     <!--<form action="liquorForm" th:action="@{/ingredients}" th:object="${liquor}" method="post">
               <label for="liquorId" th:text="#{liquor.name}"></label>
               <input type="text" th:field="*{name}" />
 
               <input type="submit" value="Submit" />
               </form> -->
-<!-------------------------WIP-------------------->
-
-
-
+    <!-------------------------WIP-------------------->
 
     <header>
       <h1>List of in Stock Ingredients</h1>
@@ -101,14 +102,16 @@
     </ul>
 
     <form method="POST">
-
       <div>
         <button th:formaction="@{show-recipes}">Show Available Recipes</button>
       </div>
-
     </form>
+
+    <section id="ReturnHome">
+      <a href="http://localhost:8080/splash-page">Click here to return home</a>
+    </section>
     <footer>
       <small>Copyright JSON and the Argonauts 2020</small>
     </footer>
   </body>
-  </html>
+</html>
