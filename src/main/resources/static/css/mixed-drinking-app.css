@@ -1,14 +1,37 @@
 html {
-    font-family: 'Times New Roman', Times, serif;
-    color: whitesmoke;
+font-family: 'Times New Roman', Times, serif;
+color: whitesmoke;
+background-color: rgb(37, 37, 37);
 }
 
-h1.cool-heading {
-    text-align: center;
-    
+.banner {
+width: 80%;
+margin: 0 auto;
+}
+
+header {
+overflow: hidden;
+  }
+
+header img {
+margin-left: 50%;
+transform: translateX(-50%);
+}
+
+h1 {
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-weight: 100;
+
 }
 
 body {
-    background-color: rgb(37, 37, 37);
-    
+
 }
+
+.addInput {
+background-color: gray;
+position: relative;
+width: 300px;
+height: 140px;
+border: 3px solid rgb(218, 218, 218);
+  }
