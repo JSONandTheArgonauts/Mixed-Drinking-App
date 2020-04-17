@@ -10,105 +10,138 @@
     />
   </head>
 
-  <body>
-<header>
-  <div class="banner">
-    <img src="images/sitebanner.png" />
-  </div>
-</header>
-
-
-
-
-    <div class="cool-headings">
-    <h2>Add or Delete Ingredients</h2>
-    </div>
-  <div class="addInput">
-    <form method="POST">
-      <div>
-        <input class="one" type="text" placeholder="Type Your Liquor" name="liquorName" />
-      </div>
-      <div>
-        <button th:formaction="@{add-liquor}">Add Liquor</button>
-      </div>
-      <div>
-        <input class="two" type="text" placeholder="Type Your Mixer" name="mixerName" />
-      </div>
-      <div>
-        <button th:formaction="@{add-mixer}">Add Mixer</button>
-      </div>
-      <div>
-        <input class="three" type="text" placeholder="Type Your Garnish" name="garnishName" />
-      </div>
-      <div>
-        <button th:formaction="@{add-garnish}">Add Garnish</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="deleteInput">
-    <form method="POST">
-      <div>
-        <label>Delete Liquor</label>
-        <input type="text" name="liquorName" />
-      </div>
-      <div>
-        <button th:formaction="@{delete-liquor}">Delete Liquor</button>
-      </div>
-
-      <div>
-        <label>Delete Mixer</label>
-        <input type="text" name="mixerName" />
-      </div>
-      <div>
-        <button th:formaction="@{delete-mixer}">Delete Mixer</button>
-      </div>
-      <div>
-        <label>Delete Garnish</label>
-        <input type="text" name="garnishName" />
-      </div>
-      <div>
-        <button th:formaction="@{delete-garnish}">Delete Garnish</button>
-      </div>
-    </form>
-  </div>
+  <body class="ingredients">
     <header>
-      <h1>List of in Stock Ingredients</h1>
+      <div class="banner">
+        <img src="images/sitebanner.png" />
+      </div>
     </header>
 
-    <p>Here is the list of ingredients you have to make drinks:</p>
+    <div class="split left">
+      <div class="centered">
+        <div class="keep">
+          <h2>Add Ingredients</h2>
 
-    <h2>Liquor</h2>
-    <ul>
-      <li th:each="liquor: ${liquorModel}">
-        <a th:text="${liquor.name}"></a>
-      </li>
-    </ul>
+          <form class="must" method="POST">
+            <input
+              class="one"
+              type="text"
+              placeholder="Type Your Liquor"
+              name="liquorName"
+            />
 
-    <h2>Mixer</h2>
-    <ul>
-      <li th:each="mixer: ${mixerModel}">
-        <a th:text="${mixer.name}"></a>
-      </li>
-    </ul>
-    <h2>Garnish</h2>
-    <ul>
-      <li th:each="garnish: ${garnishModel}">
-        <a th:text="${garnish.name}"></a>
-      </li>
-    </ul>
+            <button class="moja" th:formaction="@{add-liquor}">
+              Add Liquor
+            </button>
 
-    <form method="POST">
-      <div>
-        <button th:formaction="@{/show-recipes-by-ingredients}">Show Available Recipes</button>
+            <input
+              class="two"
+              type="text"
+              placeholder="Type Your Mixer"
+              name="mixerName"
+            />
+
+            <button class="mbili" th:formaction="@{add-mixer}">
+              Add Mixer
+            </button>
+
+            <input
+              class="three"
+              type="text"
+              placeholder="Type Your Garnish"
+              name="garnishName"
+            />
+
+            <button class="tatu" th:formaction="@{add-garnish}">
+              Add Garnish
+            </button>
+          </form>
+
+          <h2>Delete Ingredients</h2>
+
+          <form class="must" method="POST">
+            <input
+              class="four"
+              type="text"
+              placeholder="Delete Liquor"
+              name="liquorName"
+            />
+
+            <button class="nne" th:formaction="@{delete-liquor}">
+              Delete Liquor
+            </button>
+
+            <input
+              class="five"
+              type="text"
+              placeholder="Delete Mixer"
+              name="mixerName"
+            />
+
+            <button class="tano" th:formaction="@{delete-mixer}">
+              Delete Mixer
+            </button>
+
+            <input
+              class="six"
+              type="text"
+              placeholder="Delete Garnish"
+              name="garnishName"
+            />
+
+            <button class="sita" th:formaction="@{delete-garnish}">
+              Delete Garnish
+            </button>
+          </form>
+        </div>
       </div>
-    </form>
+    </div>
 
-    <section id="ReturnHome">
-      <a href="http://localhost:8080/splash-page">Click here to return home</a>
-    </section>
-    <footer>
-      <small>Copyright JSON and the Argonauts 2020</small>
-    </footer>
+    <div class="split right">
+      <div class="centered">
+        <header>
+          <h1>List of in Stock Ingredients</h1>
+        </header>
+
+        <p>Here is the list of ingredients you have to make drinks:</p>
+
+        <h2>Liquor</h2>
+        <ul>
+          <li th:each="liquor: ${liquorModel}">
+            <a th:text="${liquor.name}"></a>
+          </li>
+        </ul>
+
+        <h2>Mixer</h2>
+        <ul>
+          <li th:each="mixer: ${mixerModel}">
+            <a th:text="${mixer.name}"></a>
+          </li>
+        </ul>
+        <h2>Garnish</h2>
+        <ul>
+          <li th:each="garnish: ${garnishModel}">
+            <a th:text="${garnish.name}"></a>
+          </li>
+        </ul>
+
+        <form method="POST">
+          <div>
+            <button th:formaction="@{/show-recipes-by-ingredients}">
+              Show Available Recipes
+            </button>
+          </div>
+        </form>
+
+        <section id="ReturnHome">
+          <a href="http://localhost:8080/splash-page"
+            >Click here to return home</a
+          >
+        </section>
+        <footer>
+          <small>&copy; JSON and the Argonauts 2020</small>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>

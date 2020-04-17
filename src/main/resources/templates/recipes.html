@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://ww.thymeleaf.org">
- <link th:href="@{/css/mixed-drinking-app.css}" href="../static/css/mixed-drinking-app.css" rel="stylesheet" type="text/css" />
+  <link
+    th:href="@{/css/mixed-drinking-app.css}"
+    href="../static/css/mixed-drinking-app.css"
+    rel="stylesheet"
+    type="text/css"
+  />
 
   <head>
     <title>List of All Drinks Available</title>
   </head>
 
-  <body>
+  <body class="recipes">
     <header>
       <h1>List of All Drinks</h1>
     </header>
@@ -21,8 +26,10 @@
 
       <ul>
         <li th:each="recipe: ${recipeModel}">
-          <a th:href="@{/show-recipe(id=${recipe.id})}"
-          th:text="${recipe.name}"></a>
+          <a
+            th:href="@{/show-recipe(id=${recipe.id})}"
+            th:text="${recipe.name}"
+          ></a>
         </li>
       </ul>
 

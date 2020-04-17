@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title th:text="${recipeModel.name}">A Recipe</title>
-     <link th:href="@{/css/mixed-drinking-app.css}" href="../static/css/mixed-drinking-app.css" rel="stylesheet" type="text/css" />
+    <link
+      th:href="@{/css/mixed-drinking-app.css}"
+      href="../static/css/mixed-drinking-app.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
     <header>
@@ -10,39 +15,46 @@
     </header>
 
     <main>
-      <div id="liquors">
-        <img th:each="recipe: ${recipeModel}" th:src="${recipeModel.image}" />
+      <div class="tear">
+        <img
+          class="theImage"
+          th:each="recipe: ${recipeModel}"
+          th:src="${recipeModel.image}"
+        />
+      </div>
+      <div class="apart">
+        <div class="inner">
+          <h3>Liquors Required</h3>
+          <ul>
+            <li
+              th:each="recipe: ${recipeModel}"
+              th:text="${recipeModel.liquors}"
+            ></li>
+          </ul>
 
-        <h3>Liquors Required</h3>
-        <ul>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.liquors}"
-          ></li>
-        </ul>
-      </div>
-      <div id="mixers">
-        <h3>Mixers Required</h3>
-        <ul>
-          <li
-            th:each="recipe: ${recipeModel}"
-            th:text="${recipeModel.mixers}"
-          ></li>
-        </ul>
-      </div>
-      <div id="instructions">
-        <p th:text="${recipeModel.instructions}"></p>
+          <h3>Mixers Required</h3>
+          <ul>
+            <li
+              th:each="recipe: ${recipeModel}"
+              th:text="${recipeModel.mixers}"
+            ></li>
+          </ul>
+
+          <p th:text="${recipeModel.instructions}"></p>
+        </div>
       </div>
 
-      <section id="recipesLink">
-        <a href="http://localhost:8080/show-recipes"
-          >Back to Available Recipes</a
-        >
-      </section>
+      <div class="not">
+        <section id="recipesLink">
+          <a href="http://localhost:8080/show-recipes"
+            >Back to Available Recipes</a
+          >
+        </section>
+
+        <footer>
+          <small>&copy; JSON and the Argonauts 2020</small>
+        </footer>
+      </div>
     </main>
-
-    <footer>
-      <small>Copyright JSON and the Argonauts 2020</small>
-    </footer>
   </body>
 </html>

@@ -16,18 +16,17 @@ public class RecipesPopulator implements CommandLineRunner {
 	private RecipeRepository recipeRepo;
 
 	//Liquors field
-	private Liquor vodka;
-	private Liquor gin;
+	private Liquor vodka = new Liquor("Vodka");
+	private Liquor gin = new Liquor("Gin");
 	private Liquor burbon;
 	private Liquor whiteRum;
 	private Liquor coffeeLiqueur;
 	private Liquor tripleSec;
 	private Liquor brandy;
 	private Liquor ryeWhiskey;
-	
 	//Mixers field
-	private	Mixer orangeJuice;
-	private Mixer pinappleJuice;
+	private	Mixer orangeJuice = new Mixer("Orange Juice");
+	private Mixer pinappleJuice = new Mixer("PinappleJuice");
 	private Mixer lemonJuice;
 	private Mixer limeJuice;
 	private Mixer cranberryJuice;

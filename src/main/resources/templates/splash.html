@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://ww.thymeleaf.org">
- <link th:href="@{/css/mixed-drinking-app.css}" href="../static/css/mixed-drinking-app.css" rel="stylesheet" type="text/css" />>
-
+  <link
+    th:href="@{/css/mixed-drinking-app.css}"
+    href="../static/css/mixed-drinking-app.css"
+    rel="stylesheet"
+    type="text/css"
+  />
   <head>
     <title>Welcome to Mix-IT!</title>
   </head>
 
-  <body>
-    <h1>Welcome to Mix-It!</h1>
-
-    <pre>
+  <body class="splash">
+    <div class="container">
+      <header id="top">
+        <h1>Welcome to Mix-It!</h1>
+        <nav>
+          <button class="nav-menu">
+            Menu <downArrow class="arrow down"></downArrow>
+          </button>
+          <ul>
+            <li>
+              <a class="force" href="http://localhost:8080/show-ingredients"
+                >Go To Ingredients</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div class="keeptwo">
+      <pre>
       Bartending can be made up to be quite a serious skill in movies like James
       Bond, Cocktail, Casablanca, and Lost in Translation. Lots of us have
       desired to look into becoming a cocktail-master whether its to impress your
@@ -21,14 +41,19 @@
       ready. Want to find some new drinks? Even if you don’t have the
       ingredients you need you can find the one or two things you may need to
       pick up at the store to try something new!
-    </pre>
-
+    </pre
+      >
+    </div>
     <section id="RecipeResultsLink">
       <a href="http://localhost:8080/show-ingredients"
         >Click here to select Ingredients</a
       >
     </section>
 
-    <footer>Copyright JSON and the Argonauts 2020</footer>
+    <footer>&copy; JSON and the Argonauts 2020</footer>
+    <script
+      type="text/javascript"
+      th:src="@{js/mixed-drinking-app.js}"
+    ></script>
   </body>
 </html>
