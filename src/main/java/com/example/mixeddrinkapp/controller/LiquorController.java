@@ -36,12 +36,24 @@ public class LiquorController {
 
 	}
 
+//	@RequestMapping("/add-liquor")
+//	public String addLiquor(String liquorName, String liquorFlavor) {
+//		Liquor newLiquor = liquorRepo.findByName(liquorName);
+//
+//		if (newLiquor == null) {
+//			newLiquor = new Liquor(liquorName);
+//			liquorRepo.save(newLiquor);
+//		}
+//		return "redirect:/show-ingredients";
+//	}
+	
 	@RequestMapping("/add-liquor")
-	public String addLiquor(String liquorName, String liquorFlavor) {
+	public String addLiquor(String liquorName, boolean inStock) {
 		Liquor newLiquor = liquorRepo.findByName(liquorName);
 
 		if (newLiquor == null) {
 			newLiquor = new Liquor(liquorName);
+			newLiquor.isInStock();
 			liquorRepo.save(newLiquor);
 		}
 		return "redirect:/show-ingredients";

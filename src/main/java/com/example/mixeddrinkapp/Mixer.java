@@ -17,12 +17,14 @@ public class Mixer{
     private Long id;
     @ManyToMany(mappedBy = "mixers")
     private Set<Recipe> drinks;
-
+    private boolean inStock;
+    
     protected Mixer(){}
 
     public Mixer(String mixerName) {
         drinks = new HashSet<>();
         this.name = mixerName;
+        inStock = false;
     }
 
     public String getName() {
@@ -35,6 +37,17 @@ public class Mixer{
 
     public Set<Recipe> getDrinks() {
         return drinks;
+    }
+    
+    public void restock() {
+        inStock = true;
+    }
+    public void markOutOfStock(){
+        inStock = false;
+    }
+
+    public boolean isInStock() {
+        return inStock;
     }
 
     @Override

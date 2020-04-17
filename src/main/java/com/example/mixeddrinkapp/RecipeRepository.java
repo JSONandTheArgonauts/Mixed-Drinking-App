@@ -10,4 +10,5 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
 	Collection<Recipe> findByMixers(Mixer mixerName);
 	
+	public void findAllByLiquorsContains(Liquor liquor);
 }

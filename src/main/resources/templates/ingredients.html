@@ -2,15 +2,14 @@
 <html xmlns:th="http://ww.thymeleaf.org">
   <head>
     <title>Ingredients List</title>
-    <link
-      th:href="@{/css/mixed-drinking-app.css}"
-      href="../static/css/mixed-drinking-app.css"
+    <link th:href="@{/css/mixed-drinking-app.css}"
+    href="../static/css/mixed-drinking-app.css"
       rel="stylesheet"
-      type="text/css"
-    />
+      type="text/css"/>
+      <script src="js/mixed-drinking-app.js"></script>
   </head>
 
-  <body>
+  <body class="ingredients">
 <header>
   <div class="banner">
     <img src="images/sitebanner.png" />
@@ -18,60 +17,54 @@
 </header>
 
 
+<div class="split left">
+  <div class="centered"> 
+    <div class="keep">
 
-
-    <div class="cool-headings">
-    <h2>Add or Delete Ingredients</h2>
-    </div>
-  <div class="addInput">
+    
+    <h2>Add Ingredients</h2>
+    
+  
     <form method="POST">
-      <div>
+      
         <input class="one" type="text" placeholder="Type Your Liquor" name="liquorName" />
-      </div>
-      <div>
-        <button th:formaction="@{add-liquor}">Add Liquor</button>
-      </div>
-      <div>
+    
+      
+        <button class="moja" th:formaction="@{add-liquor}">Add Liquor</button>
+      
+      
         <input class="two" type="text" placeholder="Type Your Mixer" name="mixerName" />
-      </div>
-      <div>
-        <button th:formaction="@{add-mixer}">Add Mixer</button>
-      </div>
-      <div>
+      
+      
+        <button class="mbili" th:formaction="@{add-mixer}">Add Mixer</button>
+      
+      
         <input class="three" type="text" placeholder="Type Your Garnish" name="garnishName" />
-      </div>
-      <div>
-        <button th:formaction="@{add-garnish}">Add Garnish</button>
-      </div>
+      
+      
+        <button class="tatu" th:formaction="@{add-garnish}">Add Garnish</button>
+      
     </form>
-  </div>
-
-  <div class="deleteInput">
+  
+    <h2>Delete Ingredients</h2>
+  
     <form method="POST">
-      <div>
-        <label>Delete Liquor</label>
-        <input type="text" name="liquorName" />
-      </div>
-      <div>
-        <button th:formaction="@{delete-liquor}">Delete Liquor</button>
-      </div>
+        <input type="text" placeholder="Type Your Liquor" name="liquorName" />
+        <button id="button" th:formaction="@{delete-liquor}">Delete Liquor</button>
+      
+        <input type="text" placeholder="Type Your Mixer" name="mixerName" />
+        <button id="button2" th:formaction="@{delete-mixer}">Delete Mixer</button>
+      
+        <input type="text" placeholder="Type Your Garnish" name="garnishName" />
+  		<button id="button3" th:formaction="@{delete-garnish}">Delete Garnish</button>
+   	</form>
 
-      <div>
-        <label>Delete Mixer</label>
-        <input type="text" name="mixerName" />
-      </div>
-      <div>
-        <button th:formaction="@{delete-mixer}">Delete Mixer</button>
-      </div>
-      <div>
-        <label>Delete Garnish</label>
-        <input type="text" name="garnishName" />
-      </div>
-      <div>
-        <button th:formaction="@{delete-garnish}">Delete Garnish</button>
-      </div>
-    </form>
   </div>
+</div>
+</div>
+
+<div class="split right">
+  <div class="centered">
     <header>
       <h1>List of in Stock Ingredients</h1>
     </header>
@@ -108,7 +101,9 @@
       <a href="http://localhost:8080/splash-page">Click here to return home</a>
     </section>
     <footer>
-      <small>Copyright JSON and the Argonauts 2020</small>
+      <small>&copy; JSON and the Argonauts 2020</small>
     </footer>
+  </div>
+</div>
   </body>
 </html>

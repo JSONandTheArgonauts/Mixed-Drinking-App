@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://ww.thymeleaf.org">
- <link th:href="@{/css/mixed-drinking-app.css}" href="../static/css/mixed-drinking-app.css" rel="stylesheet" type="text/css" />>
-
+ <link th:href="@{/css/mixed-drinking-app.css}" href="../static/css/mixed-drinking-app.css" rel="stylesheet" type="text/css" />
   <head>
     <title>Welcome to Mix-IT!</title>
   </head>
 
-  <body>
-    <h1>Welcome to Mix-It!</h1>
+  <body class="splash">
+
+    <div class="container">
+      <header id="top"> 
+        <h1>Welcome to Mix-It!</h1>
+      <nav>
+        <button class="nav-menu">Menu <downArrow class="arrow down"></downArrow></button>
+      <ul>
+          <li><a class="force" href="http://localhost:8080/show-ingredients">Go To Ingredients</a></li>
+      </ul>
+    </nav>
+      </header>
+    </div>
 
     <pre>
       Bartending can be made up to be quite a serious skill in movies like James
@@ -29,6 +39,7 @@
       >
     </section>
 
-    <footer>Copyright JSON and the Argonauts 2020</footer>
+    <footer>&copy; JSON and the Argonauts 2020</footer>
+    <script type="text/javascript" th:src="@{js/mixed-drinking-app.js}"></script>
   </body>
 </html>

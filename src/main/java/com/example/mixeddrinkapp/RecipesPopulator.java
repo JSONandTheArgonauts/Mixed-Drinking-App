@@ -12,8 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class RecipesPopulator implements CommandLineRunner {
 	
+	
+	
 	@Resource
 	private RecipeRepository recipeRepo;
+	
+	@Resource
+	private IngredientsPopulator ingredientsPop;
 
 	//Liquors field
 	private Liquor vodka;

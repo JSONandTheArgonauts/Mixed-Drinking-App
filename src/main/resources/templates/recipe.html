@@ -11,7 +11,7 @@
 
     <main>
       <div id="liquors">
-        <img th:each="recipe: ${recipeModel}" th:src="${recipeModel.image}" />
+        <img class="theImage" th:each="recipe: ${recipeModel}" th:src="${recipeModel.image}" />
 
         <h3>Liquors Required</h3>
         <ul>

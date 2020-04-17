@@ -1,6 +1,9 @@
 package com.example.mixeddrinkapp.controller;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -48,7 +51,7 @@ public class RecipeController {
 	}
 	
 	@RequestMapping("/show-ingredients")
-	public String findAllIngredients(Model model) {
+	public String findAllIngredients(Liquor liquor, Mixer mixer, Model model) {
 		model.addAttribute("liquorModel", liquorRepo.findAll());
 		model.addAttribute("mixerModel", mixerRepo.findAll());
 		model.addAttribute("garnishModel", garnishRepo.findAll());
@@ -56,12 +59,43 @@ public class RecipeController {
 
 	}
 	
-	@RequestMapping("/show-recipes-by-ingredients")
-	public String findRecipesbyIngredient(String liquorName, String mixerName, Model model) {
-		Liquor liquor = liquorRepo.findByName(liquorName);
-		Mixer mixer = mixerRepo.findByName(mixerName);
-		model.addAttribute("recipeModel", recipeRepo.findByLiquors(liquor));
-		model.addAttribute("recipeModel", recipeRepo.findByMixers(mixer));
-		return ("recipes");
+//	@RequestMapping("/show-recipes-by-ingredients")
+//	public String findRecipesbyIngredient(String liquorName, String mixerName, Model model) {
+//		Liquor liquor = liquorRepo.findByName(liquorName);
+//		Mixer mixer = mixerRepo.findByName(mixerName);
+//		model.addAttribute("recipeModel", recipeRepo.findByLiquors(liquor));
+//		model.addAttribute("recipeModel", recipeRepo.findByMixers(mixer));
+//		return ("recipes");
+//	}
+	
+	@RequestMapping("/show-recipes-for-in-stock-items")
+	public String findRecipesByIngredients(Model model) {
+		Set<Recipe> recipes =new HashSet<>((List<Recipe>) recipeRepo.findAll());
+		Set<Recipe> selectedRecipes = findAvailableRecipes(recipes);
+		model.addAttribute("recipes" , selectedRecipes);
+		return ("Recipes");
+	}
+	
+	@RequestMapping("/show-avalible-recipes")
+	private Set<Recipe> findAvailableRecipes(Set<Recipe> recipes) {
+		HashSet<Recipe> availableRecipes = new HashSet<>();
+		for(Recipe recipe :recipes) {
+			boolean allLiquorsAvailable = true;
+			for(Liquor liquor: recipe.getLiquors()) {
+				if(!liquor.isInStock()) {
+					allLiquorsAvailable = false;
+				}
+			}
+			boolean allMixersAvailable = true;
+			for (Mixer mixer: recipe.getMixers()) {
+				if(!mixer.isInStock()) {
+					allMixersAvailable = false;
+				}
+			}
+			if(allLiquorsAvailable&&allMixersAvailable) {
+				availableRecipes.add(recipe);
+			}
+		}
+		return availableRecipes;
 	}
 }

@@ -24,14 +24,189 @@ font-weight: 100;
 
 }
 
-body {
-
-}
-
 .addInput {
 background-color: gray;
 position: relative;
 width: 300px;
 height: 140px;
 border: 3px solid rgb(218, 218, 218);
+}
+
+.splash {
+  text-align: center;
+}
+
+.container header {
+    background: linear-gradient(to bottom, aliceblue, silver);  
+}
+
+.container h1 {
+    color: black;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Sacramento', serif;
+}
+
+.splash footer {
+  margin-top: 2em;
+}
+
+#RecipeResultsLink a:hover {
+  color: red;
+}
+
+#ReturnHome a:hover {
+  color: red;
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 180px auto 50px;
+}
+
+.container > header {
+	display: grid;
+	border-bottom: 1px solid dimgray;
+}
+
+.container > header nav {
+	margin-top: 155px;
+	margin-left: 2rem;
+	position: absolute;
+}
+
+.container > header nav ul {
+	background-color: white;
+	display: none;
+}
+.container > header nav ul li {
+	margin-top: 1rem;
+	list-style: none;
+}
+.container > header nav ul li a {
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+}
+.container > header nav ul li.active a {
+  color: black;
+}
+
+.force {
+  color:black;
+}
+
+.nav-menu {
+	border: var(--purple) solid 1px;
+	color: black;
+	background-color: white;
+	cursor: pointer;
+	padding: 0.3em;
+	text-decoration: none;
+  font-size: 4vmin;
+  font-family: 'Pacifico', serif;
+
+}
+
+downArrow {
+  border: solid darkgray;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+#arrow {
+	height: 50px;
+	width: 50px;
+	transition: transform .2s;
+}
+
+pre {
+  font-family:sans-serif;
+}
+
+.split {
+  height: 80%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+}
+
+.keep {
+  border-color: white;
+  border-style: solid;
+  border-width: 5px;
+}
+
+.left {
+  left: 0;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  font-weight: bold;
+}
+
+.right {
+  right: 0;
+  background-color: gray;
+  font-weight: bold;
+  overflow: scroll;
+  position: fixed;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.ingredients footer {
+  margin-top: 1em;
+}
+
+#button {
+  margin-bottom: 1em;
+  margin-left: 2.1em;
+}
+
+#button2 {
+  margin-bottom: 1em;
+  margin-left: 1.4em;
+}
+
+#button3 {
+  margin-bottom: 1em;
+  margin-left: 3.4em;
+}
+
+.two {
+  margin-right: 1em;
+}
+
+.one {
+  margin-right: 0.6em;
+}
+
+.theImage {
+  height: 300px;
+  width: 200px;
+}
+
+#ReturnHome {
+  margin-top: 1em;
+}
+
+a:link {
+  color: #e4e4e4;
   }
+
+a:visited {
+  color: #77008f;
+    }

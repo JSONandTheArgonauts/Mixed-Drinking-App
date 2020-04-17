@@ -1,6 +1,5 @@
 package com.example.mixeddrinkapp;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,13 +16,15 @@ public class Liquor{
     @GeneratedValue
     private Long id;
     @ManyToMany(mappedBy = "liquors")
-    private Set<Recipe> drinks;
-
+    private Set<Recipe> recipe;
+    public Boolean inStock = false;
+    
     protected Liquor(){}
 
     public Liquor(String liquorName) {
         this.name = liquorName;
-        drinks = new HashSet<>();
+        recipe = new HashSet<>();
+        this.inStock = false;
     }
 
     public String getName() {
@@ -33,9 +34,23 @@ public class Liquor{
     public Long getId() {
         return id;
     }
+    
+    public boolean getInStock() {
+    	return inStock;
+    }
 
-    public Set<Recipe> getDrinks() {
-        return drinks;
+    public Set<Recipe> getRecipe() {
+        return recipe;
+    }
+    
+    public void restock() {
+       inStock = true;
+    }
+    public void markOutOfStock(){
+        inStock = false;
+    }
+    public boolean isInStock(){
+        return inStock;
     }
 
     @Override
@@ -44,11 +59,12 @@ public class Liquor{
         if (o == null || getClass() != o.getClass()) return false;
         Liquor liquor = (Liquor) o;
         return Objects.equals(name, liquor.name) &&
-                Objects.equals(id, liquor.id);
+                Objects.equals(id, liquor.id) &&
+                Objects.equals(inStock, liquor.inStock);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(inStock, name, id);
     }
 }
